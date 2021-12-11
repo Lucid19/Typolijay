@@ -1,14 +1,9 @@
-// Packages
-const Discord = require('discord.js')
-const config = require('./config.json')
+const Discord = require("discord.js")
+const config = require("./config.json")
 
-// Client
-const client = new Discord.Client()
+const intents = new Discord.Intents(32767)
+const client = new Discord.Client({intents})
 
+client.on("ready", () => console.log("Typolijay is online!"))
 
-client.on('ready', () => {
-    console.log('The client is ready')
-})
-
-// login
 client.login(config.token)

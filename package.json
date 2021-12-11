@@ -10,14 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/Lucid19/Typolijay.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Lucid19",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Lucid19/Typolijay/issues"
   },
   "homepage": "https://github.com/Lucid19/Typolijay#readme",
   "dependencies": {
-    "discord.js": "^13.3.1"
+    "discord.js": "^13.4.0-dev.1639137780.ee91f5a"
   }
 }
