@@ -8,4 +8,5 @@ const client = new Discord.Client({intents})
 
 client.on("ready", () => console.log("Typolijay is online!"))
 
+// Client login (Keep at bottom)
 client.login(config.token)

@@ -1,10 +1,9 @@
 {
   "name": "typolijay",
   "version": "1.0.0",
-  "description": "",
+  "description": "The main Server for bot for Typolijays!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
   "engines": {
