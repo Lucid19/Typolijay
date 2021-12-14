@@ -9,8 +9,7 @@ const guildId = '856938684612214845'
 module.exports = (client) => {
     client.handleCommands = async (commandFolder, path) => {
         client.commandArray = []
-        const file = fs.readdirSync(path).filter(file => file.endsWith('.js'))
-        for (file of commandFolder) {
+        for (const file of commandFolder) {
             const command = require(`../commands/${file}`)
 
             client.commands.set(command.data.name, command)
