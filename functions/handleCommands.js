@@ -3,11 +3,11 @@ const { Routes } = require('discord-api-types/v9')
 const config = require("../config.json")
 const fs = require('fs')
 
-const clientId = '918564694783053924'
-const guildId = '856938684612214845'
+const clientId = config.Guild
+const guildId = config.Client
 
 module.exports = (client) => {
-    client.handleCommands = async (commandFolder, path) => {
+    client.handleCommands = async (commandFolder) => {
         client.commandArray = []
         for (const file of commandFolder) {
             const command = require(`../commands/${file}`)
