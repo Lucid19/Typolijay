@@ -14,7 +14,7 @@ const functions = fs.readdirSync("./functions").filter(file => file.endsWith(".j
 const commandsFolder = fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
 const eventsFolder = fs.readdirSync("./events").filter(file => file.endsWith(".js"))
 
-for(file of functions){
+for(const file of functions){
     require(`./functions/${file}`)(client)
 }
 client.handleEvents(eventsFolder, "./events")
