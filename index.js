@@ -1,23 +1,35 @@
-// Package
-const Discord = require("discord.js")
-const config = require("./config.json")
+// filesystem
 const fs = require("fs")
+const config = require("./config.json")
 
-// Client
-const intents = new Discord.Intents(32767)
-const client = new Discord.Client({intents})
+// client
+const { Client, Intents, Collection, Interaction } = require("discord.js")
+const client = new Client({intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]})
 
-client.commands = new Discord.Collection()
+// Commands
+const commandFiles =  fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
+const commands = []
+client.commands = new Collection()
 
-// handlers
-const functions = fs.readdirSync("./functions").filter(file => file.endsWith(".js"))
-const commandsFolder = fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
-const eventsFolder = fs.readdirSync("./events").filter(file => file.endsWith(".js"))
+// Events
+const eventFiles = fs.readdirSync("./events").filter(file => file.endsWith(".js"))
 
-for(const file of functions){
-    require(`./functions/${file}`)(client)
+// loading command files
+for(const file of commandFiles){
+    const command = require(`./commands/${file}`)
+    commands.push(command.data.toJSON())
+    client.commands.set(command.data.name, command)
 }
-client.handleEvents(eventsFolder)
-client.handleCommands(commandsFolder)
-// Client login (Keep at bottom)
+
+// loading event files
+for(const file of eventFiles){
+    const event = require(`./events/${file}`)
+
+    if(event.once){
+        client.once(event.name, (...args) => event.execute(...args, commands))
+    }
+    else{
+        client.on(event.name, (...args) => event.execute(...args, commands))
+    }
+}
 client.login(config.token)
