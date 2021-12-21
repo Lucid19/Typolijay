@@ -1,6 +1,5 @@
 module.exports = {
     name: "interactionCreate",
-    once: true,
     async execute(interaction){
         client = interaction.client
         // Checking message component
