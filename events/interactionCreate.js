@@ -1,10 +1,9 @@
 module.exports = {
     name: "interactionCreate",
-
+    once: true,
     async execute(interaction){
         client = interaction.client
         // Checking message component
-        client.on("interactionCreate", async interaction => {
         if(!interaction.isCommand()) return
 
         const command = client.commands.get(interaction.commandName)
@@ -21,5 +20,4 @@ module.exports = {
                 ephemeral: true
         })
     }
-})}
-}
+}}
