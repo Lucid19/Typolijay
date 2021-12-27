@@ -20,14 +20,16 @@ module.exports = {
         // Registering commands
         var commandRegister = async() => {
             try{
+                // Global
                 // await rest.put(Routes.applicationCommands(CLIENT_ID), {
                 //     body: commands
                 // console.log("global commands set")
 
+                // Guild
                 await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.GUILD_ID), {
                     body: commands
                 })
-                console.log("local commands set")
+                console.log("guild commands set")
             }catch(err){
                 if(err)console.error(err)}
     }
