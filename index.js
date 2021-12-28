@@ -13,7 +13,6 @@ client.commands = new Collection()
 
 // Events
 const eventFiles = fs.readdirSync("./events").filter(file => file.endsWith(".js"))
-require("discord-buttons")(client)
 
 // loading command files
 for(const file of commandFiles){
