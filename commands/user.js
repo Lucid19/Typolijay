@@ -13,8 +13,8 @@ module.exports = {
             .setTitle(`${user.username}'s profile`)
             .setColor("RANDOM")
             .setThumbnail(interaction.user.displayAvatarURL({dynamic: true}))
-            .addFields({name: "Joined", value: String(member.joined)},
-                       {name: "Created", value: String(user.createdTimestamp), inline: true},
+            .addFields({name: "Joined", value: new Date(member.joinedTimestamp).toLocaleDateString(), inline: true},
+                       {name: "Created", value: new Date(member.createdTimestamp).toLocaleDateString(), inline: true},
                        {name: "ID", value: String(user.id)})
 
         interaction.reply({embeds: [userEmbed]})
