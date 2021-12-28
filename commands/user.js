@@ -1,5 +1,5 @@
 const{SlashCommandBuilder} = require("@discordjs/builders")
-const { MessageEmbed, MessageButton } = require("discord.js")
+const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -17,16 +17,18 @@ module.exports = {
                        {name: "Created", value: new Date(user.createdTimestamp).toLocaleDateString(), inline: true},
                        {name: "ID", value: String(user.id)})
 
-        const back = new MessageButton()
-            .setStyle("gray")
-            .setLabel("<")
-            .setID("back")
+        const row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId("back")
+                    .setLabel(">")
+                    .setStyle("PRIMARY"),
+                new MessageButton()
+                    .setCustomId("notes")
+                    .setLabel("notes")
+                    .setStyle("SECONDARY")
+            )
 
-        const notes = new MessageButton()
-            .setStyle("blurple")
-            .setLabel("note")
-            .setID("notes")
-
-        interaction.reply({embeds: [userEmbed], buttons: [back, notes]})
+        interaction.reply({embeds: [userEmbed], components: [row]})
     }
 }
