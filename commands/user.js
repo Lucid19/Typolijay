@@ -21,10 +21,12 @@ module.exports = {
         const back = new MessageButton()
             .setStyle("gray")
             .setLabel("<")
+            .setID("back")
 
         const notes = new MessageButton()
             .setStyle("blurple")
             .setLabel("note")
+            .setID("notes")
 
         interaction.reply({embeds: [userEmbed], buttons: [back, notes]})
     }
