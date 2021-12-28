@@ -28,6 +28,6 @@ module.exports = {
             .setLabel("note")
             .setID("notes")
 
-        interaction.reply({embeds: [userEmbed], notes})
+        interaction.reply({embeds: [userEmbed], buttons: [back, notes]})
     }
 }
