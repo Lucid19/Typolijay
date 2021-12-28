@@ -10,7 +10,7 @@ module.exports = {
         member = interaction.guild.members.cache.get(user.id)
 
         const userEmbed = new MessageEmbed()
-            .setTitle(`${memberMen.username}'s profile`)
+            .setTitle(`${user.username}'s profile`)
             .setColor("RANDOM")
             .setThumbnail(interaction.user.displayAvatarURL({dynamic: true}))
             .addFields({name: "Joined", value: new Date(member.joinedTimestamp).toLocaleDateString(), inline: true},
