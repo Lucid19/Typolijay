@@ -8,8 +8,11 @@ module.exports = {
     async execute(interaction){
         const userEmbed = new MessageEmbed()
             .setTitle(`${interaction.user.username}'s profile`)
+            .setColor("RANDOM")
             .setThumbnail(interaction.user.displayAvatarURL({dynamic: true}))
-            .addField("Hi", "Hi")
+            .addFields({name: "Joined", value: interaction.guild.member.joinedAt},
+                       {name: "Created", value: interaction.user.createdAt, inline: true},
+                       {name: "ID", value: interaction.user.id})
 
         interaction.reply({embeds: [userEmbed]})
     }
