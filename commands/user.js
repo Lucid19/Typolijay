@@ -13,8 +13,8 @@ module.exports = {
             .setColor("RANDOM")
             .setThumbnail(interaction.user.displayAvatarURL({dynamic: true}))
             .addFields({name: "Joined", value: "Null"},
-                       {name: "Created", value: user.createdAt, inline: true},
-                       {name: "ID", value: user.id})
+                       {name: "Created", value: String(user.createdAt), inline: true},
+                       {name: "ID", value: String(user.id)})
 
         interaction.reply({embeds: [userEmbed]})
     }
