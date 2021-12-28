@@ -14,7 +14,7 @@ module.exports = {
             .setColor("RANDOM")
             .setThumbnail(interaction.user.displayAvatarURL({dynamic: true}))
             .addFields({name: "Joined", value: new Date(member.joinedTimestamp).toLocaleDateString(), inline: true},
-                       {name: "Created", value: new Date(member.createdTimestamp).toLocaleDateString(), inline: true},
+                       {name: "Created", value: new Date(user.createdTimestamp).toLocaleDateString(), inline: true},
                        {name: "ID", value: String(user.id)})
 
         interaction.reply({embeds: [userEmbed]})
