@@ -16,7 +16,7 @@ module.exports = {
             .setTitle(`${memberMen.username}'s profile`)
             .setColor("RANDOM")
             .setThumbnail(interaction.user.displayAvatarURL({dynamic: true}))
-            .addFields({name: "Joined", value: new Date(member.joinedTimestamp).toLocaleDateString(), inline: true},
+            .addFields({name: "Joined", value: new Date(memberMen.joinedTimestamp).toLocaleDateString(), inline: true},
                        {name: "Created", value: new Date(member.createdTimestamp).toLocaleDateString(), inline: true},
                        {name: "ID", value: String(memberMen.id)})
 
