@@ -5,20 +5,17 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("user")
         .setDescription("Get your Stats and Information"),
-    async execute(interaction, memberMen=""){
+    async execute(interaction){
         user = interaction.user
-
-        if(memberMen == "") memberMen = user
-
-        member = interaction.guild.members.cache.get(memberMen.id)
+        member = interaction.guild.members.cache.get(user.id)
 
         const userEmbed = new MessageEmbed()
             .setTitle(`${memberMen.username}'s profile`)
             .setColor("RANDOM")
             .setThumbnail(interaction.user.displayAvatarURL({dynamic: true}))
             .addFields({name: "Joined", value: new Date(member.joinedTimestamp).toLocaleDateString(), inline: true},
-                       {name: "Created", value: new Date(memberMen.createdTimestamp).toLocaleDateString(), inline: true},
-                       {name: "ID", value: String(memberMen.id)})
+                       {name: "Created", value: new Date(user.createdTimestamp).toLocaleDateString(), inline: true},
+                       {name: "ID", value: String(user.id)})
 
         interaction.reply({embeds: [userEmbed]})
     }
