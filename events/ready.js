@@ -8,7 +8,7 @@ module.exports = {
     name: "ready",
     once: true,
     execute(client, commands) {
-        console.log("LSQ ready")
+        console.log("Typolijay ready")
 
         const CLIENT_ID = client.user.id
 
