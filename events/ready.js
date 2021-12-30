@@ -8,7 +8,7 @@ module.exports = {
     name: "ready",
     once: true,
     execute(client, commands) {
-        console.log("ready")
+        console.log("LSQ ready")
 
         const CLIENT_ID = client.user.id
 
