@@ -21,11 +21,12 @@ module.exports = {
             .addComponents(
                 new MessageButton()
                     .setCustomId("back")
-                    .setLabel(">")
-                    .setStyle("PRIMARY"),
+                    .setLabel("<")
+                    .setStyle("PRIMARY")
+                    .setDisabled(true),
                 new MessageButton()
-                    .setCustomId("notes")
-                    .setLabel("notes")
+                    .setCustomId("status")
+                    .setLabel("status")
                     .setStyle("SECONDARY")
             )
 
