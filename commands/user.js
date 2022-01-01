@@ -33,7 +33,7 @@ module.exports = {
         interaction.reply({embeds: [userEmbed], components: [row]})
 
         const filter = (interaction) => {
-            if(interaction.user.id === interaction.author.id()) return true
+            if(interaction.user.id === interaction.author.id) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
         }
 
