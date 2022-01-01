@@ -38,7 +38,7 @@ module.exports = {
                     .setStyle("SECONDARY")
             )
 
-        const message = interaction.reply({embeds: [userEmbed], components: [row]})
+        const message = interaction.reply({embeds: [userEmbed], components: [row], fetchReply: true})
 
         const filter = (interaction) => {
             if(interaction.user.id === auth) return true
