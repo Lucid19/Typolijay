@@ -1,5 +1,5 @@
 const{SlashCommandBuilder} = require("@discordjs/builders")
-const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js")
+const { MessageEmbed, MessageButton, MessageActionRow, Message, ButtonInteraction } = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -31,5 +31,16 @@ module.exports = {
             )
 
         interaction.reply({embeds: [userEmbed], components: [row]})
+
+        const filter = (interaction) => {
+            if(interaction.user.id === message.author.id()) return true
+            return interaction.reply({content: "you are not the author", ephemeral: true})
+        }
+
+        const collector = interaction.channel.createMessageComponentCollector({ filter, max: 1})
+
+        collector.on('end', (buttonInteraction) => {
+            console.log(buttonInteraction.first().customId)
+        })
     }
 }
