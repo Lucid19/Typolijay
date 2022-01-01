@@ -48,8 +48,8 @@ module.exports = {
         const collector = interaction.channel.createMessageComponentCollector({ filter })
 
         collector.on('collect', (ButtonInteraction) => {
-            ButtonInteraction.first().deferUpdate()
-            const id = ButtonInteraction.first().customId
+            ButtonInteraction.deferUpdate()
+            const id = ButtonInteraction.customId
             if(id === "status"){
                 row.components[0].setDisabled(false)
                 row.components[1].setDisabled(true)
