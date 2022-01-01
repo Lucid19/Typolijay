@@ -17,6 +17,13 @@ module.exports = {
             .addFields({name: "Joined", value: new Date(member.joinedTimestamp).toLocaleDateString(), inline: true},
                        {name: "Created", value: new Date(user.createdTimestamp).toLocaleDateString(), inline: true},
                        {name: "ID", value: String(user.id)})
+        
+        const statEmbed = new MessageEmbed()
+            .setTitle(`${user.username}'s stats`)
+            .setColor("RANDOM")
+            .addFields({name: "Acheivements", value: "Acheivement"},
+                       {name: "Points", value: "0"},
+                       {name: "rank", value: "20"})
 
         const row = new MessageActionRow()
             .addComponents(
@@ -31,7 +38,7 @@ module.exports = {
                     .setStyle("SECONDARY")
             )
 
-        interaction.reply({embeds: [userEmbed], components: [row]})
+        const message = interaction.reply({embeds: userEmbed, components: [row]})
 
         const filter = () => {
             if(interaction.user.id === auth) return true
@@ -42,7 +49,9 @@ module.exports = {
 
         collector.on('end', (ButtonInteraction) => {
             ButtonInteraction.first().deferUpdate()
-            console.log(ButtonInteraction.first().customId)
+            const id = ButtonInteraction.first().customId
+            if(id === "status")message.embeds = statEmbed
+            else if(id === "back")return
         })
     }
 }
