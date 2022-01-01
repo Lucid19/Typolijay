@@ -33,14 +33,14 @@ module.exports = {
         interaction.reply({embeds: [userEmbed], components: [row]})
 
         const filter = (interaction) => {
-            if(interaction.user.id === message.author.id()) return true
+            if(interaction.user.id === interaction.author.id()) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
         }
 
         const collector = interaction.channel.createMessageComponentCollector({ filter, max: 1})
 
-        collector.on('end', (buttonInteraction) => {
-            console.log(buttonInteraction.first().customId)
+        collector.on('end', (ButtonInteraction) => {
+            console.log(ButtonInteraction.first().customId)
         })
     }
 }
