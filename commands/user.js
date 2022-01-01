@@ -51,14 +51,14 @@ module.exports = {
             ButtonInteraction.first().deferUpdate()
             const id = ButtonInteraction.first().customId
             if(id === "status"){
-                message.edit({embeds: [statEmbed]})
                 row.components[0].setDisabled(false)
                 row.components[1].setDisabled(true)
+                message.edit({embeds: [statEmbed], components: [row]})
             }
             else if(id === "back"){
-                message.edit({embeds: [userEmbed]})
                 row.components[0].setDisabled(true)
                 row.components[1].setDisabled(false)
+                message.edit({embeds: [userEmbed], components: [row]})
             }
         })
     }
