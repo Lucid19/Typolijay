@@ -38,7 +38,7 @@ module.exports = {
                     .setStyle("SECONDARY")
             )
 
-        const message = interaction.reply({embeds: userEmbed, components: [row]})
+        const message = interaction.reply({embeds: [userEmbed], components: [row]})
 
         const filter = () => {
             if(interaction.user.id === auth) return true
@@ -50,7 +50,7 @@ module.exports = {
         collector.on('end', (ButtonInteraction) => {
             ButtonInteraction.first().deferUpdate()
             const id = ButtonInteraction.first().customId
-            if(id === "status")message.embeds = statEmbed
+            if(id === "status")message.embeds = [statEmbed]
             else if(id === "back")return
         })
     }
