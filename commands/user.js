@@ -1,5 +1,5 @@
 const{SlashCommandBuilder} = require("@discordjs/builders")
-const { MessageEmbed, MessageButton, MessageActionRow, Message, ButtonInteraction } = require("discord.js")
+const { MessageEmbed, MessageButton, MessageActionRow} = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,6 +8,7 @@ module.exports = {
     async execute(interaction){
         user = interaction.user
         member = interaction.guild.members.cache.get(user.id)
+        auth = user.id
 
         const userEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s profile`)
@@ -32,8 +33,8 @@ module.exports = {
 
         interaction.reply({embeds: [userEmbed], components: [row]})
 
-        const filter = (interaction) => {
-            if(interaction.user.id === interaction.author.id) return true
+        const filter = () => {
+            if(interaction.user.id === auth) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
         }
 
