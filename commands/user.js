@@ -50,7 +50,7 @@ module.exports = {
         collector.on('end', (ButtonInteraction) => {
             ButtonInteraction.first().deferUpdate()
             const id = ButtonInteraction.first().customId
-            if(id === "status")message.embeds = [statEmbed]
+            if(id === "status")message.edit({embeds: [statEmbed]})
             else if(id === "back")return
         })
     }
