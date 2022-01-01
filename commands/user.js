@@ -38,9 +38,9 @@ module.exports = {
                     .setStyle("SECONDARY")
             )
 
-        const message = interaction.channel.send({embeds: [userEmbed], components: [row]})
+        const message = interaction.reply({embeds: [userEmbed], components: [row]})
 
-        const filter = () => {
+        const filter = (interaction) => {
             if(interaction.user.id === auth) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
         }
