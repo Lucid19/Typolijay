@@ -1,5 +1,5 @@
 const{SlashCommandBuilder} = require("@discordjs/builders")
-const { MessageEmbed, MessageButton, MessageActionRow} = require("discord.js")
+const { MessageEmbed, MessageButton, MessageActionRow, edit} = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -50,7 +50,7 @@ module.exports = {
         collector.on('end', (ButtonInteraction) => {
             ButtonInteraction.first().deferUpdate()
             const id = ButtonInteraction.first().customId
-            if(id === "status")message.edit({embeds: [statEmbed]})
+            if(id === "status") console.log(message)
             else if(id === "back")return
         })
     }
