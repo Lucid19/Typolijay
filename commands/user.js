@@ -41,6 +41,7 @@ module.exports = {
         const collector = interaction.channel.createMessageComponentCollector({ filter, max: 1 })
 
         collector.on('end', (ButtonInteraction) => {
+            ButtonInteraction.first().deferUpdate()
             console.log(ButtonInteraction.first().customId)
         })
     }
