@@ -38,7 +38,7 @@ module.exports = {
                     .setStyle("SECONDARY")
             )
 
-        const message = interaction.reply({embeds: [userEmbed], components: [row]})
+        const message = interaction.channel.send({embeds: [userEmbed], components: [row]})
 
         const filter = () => {
             if(interaction.user.id === auth) return true
