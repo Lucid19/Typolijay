@@ -45,7 +45,7 @@ module.exports = {
             return interaction.reply({content: "you are not the author", ephemeral: true})
         }
 
-        const collector = interaction.channel.createMessageComponentCollector({ filter, max: 1 })
+        const collector = interaction.channel.createMessageComponentCollector({ filter, max: 2 })
 
         collector.on('end', (ButtonInteraction) => {
             ButtonInteraction.first().deferUpdate()
