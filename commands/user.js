@@ -50,7 +50,7 @@ module.exports = {
         collector.on('end', (ButtonInteraction) => {
             ButtonInteraction.first().deferUpdate()
             const id = ButtonInteraction.first().customId
-            if(id === "status") console.log(message[0])
+            if(id === "status") console.log(message[3])
             else if(id === "back")return
         })
     }
