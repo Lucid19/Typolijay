@@ -1,6 +1,13 @@
 const{SlashCommandBuilder} = require("@discordjs/builders")
 const { MessageEmbed, MessageButton, MessageActionRow, edit} = require("discord.js")
+const mysql = require("mysql")
 
+const con = mysql.createConnection({
+    host: 'eu-cdbr-west-02.cleardb.net',
+    user: 'b019edfd930bb5',
+    password: 'fd25401a',
+    database: ''
+})
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("user")
@@ -33,8 +40,8 @@ module.exports = {
                     .setStyle("PRIMARY")
                     .setDisabled(true),
                 new MessageButton()
-                    .setCustomId("status")
-                    .setLabel("status")
+                    .setCustomId("stats")
+                    .setLabel("stats")
                     .setStyle("SECONDARY")
             )
 
@@ -50,7 +57,7 @@ module.exports = {
         collector.on('collect', (ButtonInteraction) => {
             ButtonInteraction.deferUpdate()
             const id = ButtonInteraction.customId
-            if(id === "status"){
+            if(id === "stats"){
                 row.components[0].setDisabled(false)
                 row.components[1].setDisabled(true)
                 message.edit({embeds: [statEmbed], components: [row]})
