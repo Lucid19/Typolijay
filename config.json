@@ -1,4 +1,8 @@
 {
     "token" : "OTE4NTY0Njk0NzgzMDUzOTI0.YbJGCQ.6W0_DAoz3bwQWukTLJnLCjq_aNY",
-    "GUILD_ID" : "856938684612214845"
+    "GUILD_ID" : "856938684612214845",
+    "host" : "eu-cdbr-west-02.cleardb.net",
+    "user" : "b019edfd930bb5",
+    "password" : "fd25401a",
+    "database" : "heroku_cf001209575d7ba"
 }
