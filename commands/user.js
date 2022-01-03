@@ -1,12 +1,16 @@
+// discord.js
 const{SlashCommandBuilder} = require("@discordjs/builders")
 const { MessageEmbed, MessageButton, MessageActionRow, edit} = require("discord.js")
+
+// packages
 const mysql = require("mysql")
+const config = require("../config.json")
 
 const con = mysql.createConnection({
-    host: 'eu-cdbr-west-02.cleardb.net',
-    user: 'b019edfd930bb5',
-    password: 'fd25401a',
-    database: ''
+    host: config.host,
+    user: config.user,
+    password: config.password,
+    database: config.database
 })
 module.exports = {
     data: new SlashCommandBuilder()
@@ -17,6 +21,13 @@ module.exports = {
         member = interaction.guild.members.cache.get(user.id)
         auth = user.id
 
+        // MYSQL connection to database
+        con.connect(function (err) {
+            if (err) throw err
+            console.log("Connected!")
+        })
+
+        // initial interface
         const userEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s profile`)
             .setColor("RANDOM")
@@ -25,6 +36,7 @@ module.exports = {
                        {name: "Created", value: new Date(user.createdTimestamp).toLocaleDateString(), inline: true},
                        {name: "ID", value: String(user.id)})
         
+        // displays users stats within the server
         const statEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s stats`)
             .setColor("RANDOM")
@@ -32,6 +44,7 @@ module.exports = {
                        {name: "Points", value: "0"},
                        {name: "rank", value: "20"})
 
+        // buttons displayed
         const row = new MessageActionRow()
             .addComponents(
                 new MessageButton()
@@ -45,15 +58,19 @@ module.exports = {
                     .setStyle("SECONDARY")
             )
 
+        // message itself as a variable
         const message = await interaction.reply({embeds: [userEmbed], components: [row], fetchReply: true})
 
+        // used to check whether the interaction is by author
         const filter = (interaction) => {
             if(interaction.user.id === auth) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
         }
 
+        // collects all interactions
         const collector = interaction.channel.createMessageComponentCollector({ filter })
 
+        // processes interactions
         collector.on('collect', (ButtonInteraction) => {
             ButtonInteraction.deferUpdate()
             const id = ButtonInteraction.customId
