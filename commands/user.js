@@ -12,6 +12,9 @@ const con = mysql.createConnection({
     password: config.password,
     database: config.database
 })
+
+var sql = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))"
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("user")
@@ -26,6 +29,11 @@ module.exports = {
             if (err) throw err
             console.log("Connected!")
         })
+
+        con.query(sql, function (err) {
+            if (err) throw err;
+            console.log("Table created");
+        });
 
         // initial interface
         const userEmbed = new MessageEmbed()
