@@ -22,17 +22,6 @@ module.exports = {
         member = interaction.guild.members.cache.get(user.id)
         auth = user.id
 
-        // MYSQL connection to database
-        con.connect(function (err) {
-            if (err) throw err
-            console.log("Connected!")
-        })
-
-        con.query(sql, function (err) {
-            if (err) throw err;
-            console.log("Table created");
-        });
-
         // initial interface
         const userEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s profile`)
