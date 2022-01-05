@@ -13,8 +13,6 @@ const con = mysql.createConnection({
     database: config.database
 })
 
-var sql = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))"
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("user")
@@ -48,9 +46,8 @@ module.exports = {
         const statEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s stats`)
             .setColor("RANDOM")
-            .addFields({name: "Acheivements", value: "Acheivement"},
-                       {name: "Points", value: "0"},
-                       {name: "rank", value: "20"})
+            .addFields({name: "Roles", value: "...", inline: true},
+                       {name: "Rank", value: "20", inline: true})
 
         // buttons displayed
         const row = new MessageActionRow()
