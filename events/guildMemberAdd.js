@@ -21,7 +21,7 @@ module.exports = {
 
         // setting up Users stats
         for(let i = 0; i < tables.length; i++){
-            let sql = `INSET INTO ${tables[i]} (user_id, level, messages) VALUE (${member.id}, 0, 0)`
+            let sql = `INSERT INTO ${tables[i]} (user_id, level, messages) VALUE (${member.id}, 0, 0)`
             con.query(sql, (err) => {if(err) throw err})
         }
     }
