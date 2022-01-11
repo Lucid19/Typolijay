@@ -1,7 +1,7 @@
 const mysql = require("mysql")
 const config = require("../config.json")
 
-tables = ["debate"]
+tables = ["debate", "meme", "motivational", "general"]
 
 module.exports = {
     name: "guildMemberAdd",
