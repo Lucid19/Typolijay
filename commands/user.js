@@ -80,7 +80,7 @@ module.exports = {
             if(id === "stats"){
                 row.components[0].setDisabled(false)
                 row.components[1].setDisabled(true)
-                row.components[0].setDisabled(false)
+                row.components[2].setDisabled(false)
                 message.edit({embeds: [statEmbed], components: [row]})
             }
             else if(id === "back"){
