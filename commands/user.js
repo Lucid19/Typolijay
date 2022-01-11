@@ -37,6 +37,11 @@ module.exports = {
             .setColor("RANDOM")
             .addFields({name: "Roles", value: "...", inline: true},
                        {name: "Rank", value: "20", inline: true})
+        
+        const levelEmbed = new MessageEmbed()
+            .setTitle(`${user.username}'s progress`)
+            .setColor("RANDOM")
+            .addFields()
 
         // buttons displayed
         const row = new MessageActionRow()
@@ -49,6 +54,10 @@ module.exports = {
                 new MessageButton()
                     .setCustomId("stats")
                     .setLabel("stats")
+                    .setStyle("SECONDARY"),
+                new MessageButton()
+                    .setCustomId("progress")
+                    .setLabel("progress")
                     .setStyle("SECONDARY")
             )
 
@@ -71,12 +80,20 @@ module.exports = {
             if(id === "stats"){
                 row.components[0].setDisabled(false)
                 row.components[1].setDisabled(true)
+                row.components[0].setDisabled(false)
                 message.edit({embeds: [statEmbed], components: [row]})
             }
             else if(id === "back"){
                 row.components[0].setDisabled(true)
                 row.components[1].setDisabled(false)
+                row.components[2].setDisabled(false)
                 message.edit({embeds: [userEmbed], components: [row]})
+            }
+            else if(id === "progress"){
+                row.components[0].setDisabled(false)
+                row.components[1].setDisabled(false)
+                row.components[2].setDisabled(true)
+                message.edit({embeds: [levelEmbed], components: [row]})
             }
         })
     }
