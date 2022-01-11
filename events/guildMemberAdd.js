@@ -20,9 +20,14 @@ module.exports = {
         });
 
         // setting up Users stats
-        for(let i = 0; i < tables.length; i++){
-            let sql = `INSERT INTO ${tables[i]} (user_id, level, messages) VALUE (${member.id}, 0, 0)`
-            con.query(sql, (err) => {if(err) throw err})
-        }
+        let sql = "SELECT user_id FROM general"
+        con.query(sql, (err, result) => {
+            if(err) throw err
+            if(member.id in result) return
+            for(let i = 0; i < tables.length; i++){
+                sql = `INSERT INTO ${tables[i]} (user_id, level, messages) VALUE (${member.id}, 0, 0)`
+                con.query(sql, (err) => {if(err) throw err})
+            }
+        })
     }
 }
