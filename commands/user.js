@@ -28,7 +28,7 @@ module.exports = {
         let sql = "SELECT * FROM debate"
         result_debate = con.query(sql, (err, result) => {
             if(err) throw err
-            print(result)
+            console.log(result)
             for(let i=0; i < result.length; i++){
                 if(result[i][0] === member.id) return result[i]
             }
@@ -38,7 +38,7 @@ module.exports = {
         sql = "SELECT * FROM general"
         result_general = con.query(sql, (err, result) => {
             if(err) throw err
-            print(result)
+            console.log(result)
             for(let i=0; i < result.length; i++){
                 if(result[i][0] === member.id) return result[i]
             }
@@ -48,7 +48,7 @@ module.exports = {
         sql = "SELECT * FROM meme"
         result_meme = con.query(sql, (err, result) => {
             if(err) throw err
-            print(result)
+            console.log(result)
             for(let i=0; i < result.length; i++){
                 if(result[i][0] === member.id) return result[i]
             }
@@ -58,7 +58,7 @@ module.exports = {
         sql = "SELECT * FROM motivational"
         result_motivational = con.query(sql, (err, result) => {
             if(err) throw err
-            print(result)
+            console.log(result)
             for(let i=0; i < result.length; i++){
                 if(result[i][0] === member.id) return result[i]
             }
