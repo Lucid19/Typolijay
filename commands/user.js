@@ -27,7 +27,7 @@ module.exports = {
         con.connect((err) => {if(err)throw err;})
 
         function setResult(result, array){
-            array.push(result)
+            return array.push(result)
         }
 
         // getting user's stats from sql database: debate table
@@ -35,7 +35,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i], results)
+                if(result[i].user_id === member.id) setResult(result[i], results)
             }
         })
 
@@ -44,7 +44,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i], results)
+                if(result[i].user_id === member.id) setResult(result[i], results)
             }
         })
 
@@ -53,7 +53,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i], results)
+                if(result[i].user_id === member.id) setResult(result[i], results)
             }
         })
 
@@ -62,7 +62,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i], results)
+                if(result[i].user_id === member.id) setResult(result[i], results)
             }
         })
 
