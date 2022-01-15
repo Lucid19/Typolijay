@@ -37,7 +37,7 @@ module.exports = {
             console.log(member.id)
             for(let i=0; i < result.length; i++){
                 console.log(result[i].user_id)
-                if(parseInt(result[i].user_id) === member.id) return setResult(result[i], results)
+                if(parseInt(result[i].user_id) === member.id) return console.log("hello")
             }
         })
 
