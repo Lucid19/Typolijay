@@ -112,10 +112,10 @@ module.exports = {
         const levelEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s progress`)
             .setColor("RANDOM")
-            .addFields({name: "general", value: `lvl: ${results[2].level} ${bar(results[2].level, results[2].messages)}`},
-                       {name: "debate", value: `lvl: ${results[3].level} ${bar(results[3].level, results[3].messages)}`},
-                       {name: "motivational", value: `lvl: ${results[0].level} ${bar(results[0].level, results[0].messages)}`},
-                       {name: "meme", value: `lvl: ${results[1].level} ${bar(results[1].level, results[1].messages)}`})
+            .addFields({name: "general", value: `lvl: ${results[2][1]} ${bar(results[2][1], results[2][2])}`},
+                       {name: "debate", value: `lvl: ${results[3][1]} ${bar(results[3][1], results[3][2])}`},
+                       {name: "motivational", value: `lvl: ${results[0][1]} ${bar(results[0][1], results[0][2])}`},
+                       {name: "meme", value: `lvl: ${results[1][1]} ${bar(results[1][1], results[1][2])}`})
 
         // buttons displayed
         const row = new MessageActionRow()
