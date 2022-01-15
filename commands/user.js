@@ -38,7 +38,8 @@ module.exports = {
         result_general = con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i-1].user_id === member.id) return result[i]
+                print(i)
+                if(result[i].user_id === member.id) return result[i]
             }
         })
 
@@ -47,7 +48,7 @@ module.exports = {
         result_meme = con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i-1].user_id === member.id) return result[i]
+                if(result[i].user_id === member.id) return result[i]
             }
         })
 
@@ -56,7 +57,7 @@ module.exports = {
         result_motivational = con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i-1].user_id === member.id) return result[i]
+                if(result[i].user_id === member.id) return result[i]
             }
         })
 
