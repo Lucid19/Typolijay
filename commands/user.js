@@ -39,14 +39,11 @@ module.exports = {
             }
         })
 
-        console.log(result_debate)
-
         // getting user's stats from sql database: general table
         sql = "SELECT * FROM general"
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                console.log(i)
                 if(result[i].user_id === member.id) setResult(result[i])
             }
         })
