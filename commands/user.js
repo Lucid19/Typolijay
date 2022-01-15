@@ -22,10 +22,10 @@ module.exports = {
         const member = interaction.guild.members.cache.get(user.id)
         const auth = user.id
 
-        var result_debate
-        var result_general
-        var result_meme
-        var result_motivational
+        let result_debate
+        let result_general
+        let result_meme
+        let result_motivational
 
         con.connect((err) => {if(err)throw err;})
 
