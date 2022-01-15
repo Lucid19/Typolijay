@@ -70,6 +70,8 @@ module.exports = {
             }
         })
 
+        con.end()
+
         console.log(results)
 
         function bar(level, messages){
