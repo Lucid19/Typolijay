@@ -28,9 +28,8 @@ module.exports = {
         let sql = "SELECT * FROM debate"
         result_debate = con.query(sql, (err, result) => {
             if(err) throw err
-            console.log(result[0].user_id)
             for(let i=0; i < result.length; i++){
-                if(result[i][0] === member.id) return result[i]
+                if(result[i].user_id === member.id) return result[i]
             }
         })
 
@@ -38,9 +37,8 @@ module.exports = {
         sql = "SELECT * FROM general"
         result_general = con.query(sql, (err, result) => {
             if(err) throw err
-            console.log(result[0].user_id)
             for(let i=0; i < result.length; i++){
-                if(result[i][0] === member.id) return result[i]
+                if(result[i].user_id === member.id) return result[i]
             }
         })
 
@@ -48,9 +46,8 @@ module.exports = {
         sql = "SELECT * FROM meme"
         result_meme = con.query(sql, (err, result) => {
             if(err) throw err
-            console.log(result[0].user_id)
             for(let i=0; i < result.length; i++){
-                if(result[i][0] === member.id) return result[i]
+                if(result[i].user_id === member.id) return result[i]
             }
         })
 
@@ -58,9 +55,8 @@ module.exports = {
         sql = "SELECT * FROM motivational"
         result_motivational = con.query(sql, (err, result) => {
             if(err) throw err
-            console.log(result[0].user_id)
             for(let i=0; i < result.length; i++){
-                if(result[i][0] === member.id) return result[i]
+                if(result[i].user_id === member.id) return result[i]
             }
         })
 
@@ -106,10 +102,10 @@ module.exports = {
         const levelEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s progress`)
             .setColor("RANDOM")
-            .addFields({name: "general", value: `lvl: ${result_general[1]} ${bar(result_general[1], result_general[2])} \n`},
-                       {name: "debate", value: `lvl: ${result_debate[1]} ${bar(result_general[1], result_general[2])} \n`},
-                       {name: "motivational", value: `lvl: ${result_motivational[1]} ${bar(result_motivational[1], result_motivational[2])} \n`},
-                       {name: "meme", value: `lvl: ${result_meme[1]} ${bar(result_meme[1], result_meme[2])} \n`})
+            .addFields({name: "general", value: `lvl: ${result_general.level} ${bar(result_general.level, result_general.messages)}`},
+                       {name: "debate", value: `lvl: ${result_debate.level} ${bar(result_general.level, result_general.messages)}`},
+                       {name: "motivational", value: `lvl: ${result_motivational.level} ${bar(result_motivational.level, result_motivational.messages)}`},
+                       {name: "meme", value: `lvl: ${result_meme.level} ${bar(result_meme.level, result_meme.messages)}`})
 
         // buttons displayed
         const row = new MessageActionRow()
