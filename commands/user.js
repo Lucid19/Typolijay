@@ -22,12 +22,12 @@ module.exports = {
         const member = interaction.guild.members.cache.get(user.id)
         const auth = user.id
 
-        let results = []
+        let results = ["hm"]
 
         con.connect((err) => {if(err)throw err;})
 
         function setResult(result, array){
-            return array.push(result)
+            array.push(result)
         }
 
         // getting user's stats from sql database: debate table
