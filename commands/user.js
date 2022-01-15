@@ -26,39 +26,39 @@ module.exports = {
 
         // getting user's stats from sql database: debate table
         let sql = "SELECT * FROM debate"
-        result_debate = con.query(sql, (err, result) => {
+        con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return result[i]
+                if(result[i].user_id === member.id) result_debate = result[i]
             }
         })
 
         // getting user's stats from sql database: general table
         sql = "SELECT * FROM general"
-        result_general = con.query(sql, (err, result) => {
+        con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
                 console.log(i)
-                if(result[i].user_id === member.id) return result[i]
+                if(result[i].user_id === member.id) result_general = result[i]
             }
         })
         console.log(result_general)
 
         // getting user's stats from sql database: meme table
         sql = "SELECT * FROM meme"
-        result_meme = con.query(sql, (err, result) => {
+        con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return result[i]
+                if(result[i].user_id === member.id) result_meme = result[i]
             }
         })
 
         // getting user's stats from sql database: motivational table
         sql = "SELECT * FROM motivational"
-        result_motivational = con.query(sql, (err, result) => {
+        con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return result[i]
+                if(result[i].user_id === member.id) result_motivational = result[i]
             }
         })
 
