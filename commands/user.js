@@ -34,6 +34,8 @@ module.exports = {
         let sql = "SELECT * FROM debate"
         con.query(sql, (err, result) => {
             if(err) throw err
+            console.log(result[i].user_id)
+            console.log(member.id)
             for(let i=0; i < result.length; i++){
                 if(result[i].user_id === member.id) console.log("niceeeeeeeee")
             }
