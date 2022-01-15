@@ -22,12 +22,12 @@ module.exports = {
         const member = interaction.guild.members.cache.get(user.id)
         const auth = user.id
 
-        let results = ["pizza"]
+        let results = []
 
         con.connect((err) => {if(err)throw err;})
 
-        function setResult(user_id, level, messages){
-            results.push([user_id, level, messages])
+        function setResult(user_id, level, messages, array){
+            array.push([user_id, level, messages])
         }
 
         // getting user's stats from sql database: debate table
@@ -35,7 +35,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages)
+                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages, results)
             }
         })
 
@@ -44,7 +44,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages)
+                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages, results)
             }
         })
 
@@ -53,7 +53,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages)
+                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages, results)
             }
         })
 
@@ -62,7 +62,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages)
+                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages, results)
             }
         })
 
