@@ -22,16 +22,17 @@ module.exports = {
         const member = interaction.guild.members.cache.get(user.id)
         const auth = user.id
 
-        let result_debate
-        let result_general
-
-
+        var results = []
 
         con.connect((err) => {if(err)throw err;})
 
+        function setResult(result){
+            results.push(result)
+        }
+
         // getting user's stats from sql database: debate table
         let sql = "SELECT * FROM debate"
-        con.query(sql, result_debate = (err, result) => {
+        con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
                 if(result[i].user_id === member.id) return result[i]
@@ -42,11 +43,11 @@ module.exports = {
 
         // getting user's stats from sql database: general table
         sql = "SELECT * FROM general"
-        con.query(sql, result_general = (err, result) => {
+        con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
                 console.log(i)
-                if(result[i].user_id === member.id) return result[i]
+                if(result[i].user_id === member.id) setResult(result[i])
             }
         })
         console.log(result_general)
@@ -56,7 +57,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) result_meme = result[i]
+                if(result[i].user_id === member.id) setResult(result[i])
             }
         })
 
@@ -65,7 +66,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) result_motivational = result[i]
+                if(result[i].user_id === member.id) setResult(result[i])
             }
         })
 
@@ -111,10 +112,10 @@ module.exports = {
         const levelEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s progress`)
             .setColor("RANDOM")
-            .addFields({name: "general", value: `lvl: ${result_general.level} ${bar(result_general.level, result_general.messages)}`},
-                       {name: "debate", value: `lvl: ${result_debate.level} ${bar(result_general.level, result_general.messages)}`},
-                       {name: "motivational", value: `lvl: ${result_motivational.level} ${bar(result_motivational.level, result_motivational.messages)}`},
-                       {name: "meme", value: `lvl: ${result_meme.level} ${bar(result_meme.level, result_meme.messages)}`})
+            .addFields({name: "general", value: `lvl: ${results[2].level} ${bar(results[2].level, results[2].messages)}`},
+                       {name: "debate", value: `lvl: ${results[3].level} ${bar(results[3].level, results[3].messages)}`},
+                       {name: "motivational", value: `lvl: ${results[0].level} ${bar(results[0].level, results[0].messages)}`},
+                       {name: "meme", value: `lvl: ${results[1].level} ${bar(results[1].level, results[1].messages)}`})
 
         // buttons displayed
         const row = new MessageActionRow()
