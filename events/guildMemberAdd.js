@@ -15,9 +15,7 @@ module.exports = {
         })
 
         // connecting to database
-        con.connect(function(err) {
-            if (err) throw err;
-        });
+        con.connect((err) => {if (err) throw err;});
 
         // setting up Users stats
         let sql = "SELECT user_id FROM general"

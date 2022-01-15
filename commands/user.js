@@ -22,6 +22,67 @@ module.exports = {
         member = interaction.guild.members.cache.get(user.id)
         auth = user.id
 
+        con.connect((err) => {if(err)throw err;})
+
+        // getting user's stats from sql database: debate table
+        let sql = "SELECT * FROM debate"
+        result_debate = con.query(sql, (err, result) => {
+            if(err) throw err
+            for(let i=0; i < result.length; i++){
+                if(result[i][0] === member.id) return result[i]
+            }
+        })
+
+        // getting user's stats from sql database: general table
+        sql = "SELECT * FROM general"
+        result_general = con.query(sql, (err, result) => {
+            if(err) throw err
+            for(let i=0; i < result.length; i++){
+                if(result[i][0] === member.id) return result[i]
+            }
+        })
+
+        // getting user's stats from sql database: meme table
+        sql = "SELECT * FROM meme"
+        result_meme = con.query(sql, (err, result) => {
+            if(err) throw err
+            for(let i=0; i < result.length; i++){
+                if(result[i][0] === member.id) return result[i]
+            }
+        })
+
+        // getting user's stats from sql database: motivational table
+        sql = "SELECT * FROM motivational"
+        result_motivational = con.query(sql, (err, result) => {
+            if(err) throw err
+            for(let i=0; i < result.length; i++){
+                if(result[i][0] === member.id) return result[i]
+            }
+        })
+
+        function bar(level, messages){
+            function prog(messages, max){
+                let bar = ""
+                for(let i = 0; i < 10; i++){
+                    if(messages > max/10){
+                        bar.concat(":blue_square:")
+                        messages -= max/10
+                    }
+                    else{
+                        bar.concat("black_large_square")
+                    }
+                }
+                return bar
+            }
+
+            if(level === 0) prog(messages, 500)
+            else if(level === 1) prog(messages, 1000)
+            else if(level === 2) prog(messages, 1500)
+            else if(level === 3) prog(messages, 2000)
+            else if(level === 4) prog(messages, 2500)
+            else if(level === 5) return "MAX"
+        }
+
         // initial interface
         const userEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s profile`)
@@ -41,7 +102,10 @@ module.exports = {
         const levelEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s progress`)
             .setColor("RANDOM")
-            .addFields()
+            .addFields({name: "general", value: `lvl: ${result_general[1]} ${bar(result_general[1], result_general[2])} \n`},
+                       {name: "debate", value: `lvl: ${result_debate[1]} ${bar(result_general[1], result_general[2])} \n`},
+                       {name: "motivational", value: `lvl: ${result_motivational[1]} ${bar(result_motivational[1], result_motivational[2])} \n`},
+                       {name: "meme", value: `lvl: ${result_meme[1]} ${bar(result_meme[1], result_meme[2])} \n`})
 
         // buttons displayed
         const row = new MessageActionRow()
