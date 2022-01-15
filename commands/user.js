@@ -36,10 +36,9 @@ module.exports = {
             if(err) throw err
             console.log(member.id)
             for(let i=0; i < result.length; i++){
-                console.log(result[i].user_id)
+                console.log(i)
                 if(result[i].user_id === member.id) return console.log("niceeeeeeeee")
             }
-            return
         })
 
         // getting user's stats from sql database: general table
