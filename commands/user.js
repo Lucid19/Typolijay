@@ -36,7 +36,7 @@ module.exports = {
             if(err) throw err
             console.log(member.id)
             for(let i=0; i < result.length; i++){
-                console.log(i)
+                console.log(result[i].user_id)
                 if(result[i].user_id === member.id) return console.log("niceeeeeeeee")
             }
         })
