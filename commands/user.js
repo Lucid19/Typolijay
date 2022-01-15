@@ -35,7 +35,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return result[i]
+                if(result[i].user_id === member.id) setResult(result[i])
             }
         })
 
