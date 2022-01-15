@@ -1,5 +1,5 @@
 // discord.js
-const{SlashCommandBuilder} = require("@discordjs/builders")
+const{ SlashCommandBuilder } = require("@discordjs/builders")
 const { MessageEmbed, MessageButton, MessageActionRow, edit} = require("discord.js")
 
 // packages
@@ -22,7 +22,7 @@ module.exports = {
         const member = interaction.guild.members.cache.get(user.id)
         const auth = user.id
 
-        let results = ["hm"]
+        let results = []
 
         con.connect((err) => {if(err)throw err;})
 
@@ -35,7 +35,7 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) setResult(result[i], results)
+                if(result[i].user_id === member.id) console.log("niceeeeeeeee")
             }
         })
 
