@@ -47,7 +47,6 @@ module.exports = {
                 if(result[i].user_id === member.id) setResult(result[i])
             }
         })
-        console.log(result_general)
 
         // getting user's stats from sql database: meme table
         sql = "SELECT * FROM meme"
