@@ -35,8 +35,10 @@ module.exports = {
         con.query(sql, (err, result) => {
             if(err) throw err
             console.log(member.id)
+            console.log(typeof(member.id))
             for(let i=0; i < result.length; i++){
                 console.log(result[i].user_id)
+                console.log(typeof(result[i].user_id))
                 if(parseInt(result[i].user_id) === member.id) return console.log("hello")
             }
         })
