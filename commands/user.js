@@ -27,8 +27,8 @@ module.exports = {
         con.connect((err) => {if(err)throw err;})
 
         function setResult(user_id, level, messages, array){
-            console.log(user_id, level, messages)
-            array.push([user_id, level, messages])
+            console.log(level, messages)
+            array.push([level, messages])
         }
 
         // getting user's stats from sql database: debate table
