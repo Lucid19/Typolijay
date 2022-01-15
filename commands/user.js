@@ -27,6 +27,7 @@ module.exports = {
         con.connect((err) => {if(err)throw err;})
 
         function setResult(user_id, level, messages, array){
+            console.log(user_id, level, messages)
             array.push([user_id, level, messages])
         }
 
