@@ -24,27 +24,29 @@ module.exports = {
 
         let result_debate
         let result_general
-        let result_meme
-        let result_motivational
+
+
 
         con.connect((err) => {if(err)throw err;})
 
         // getting user's stats from sql database: debate table
         let sql = "SELECT * FROM debate"
-        con.query(sql, (err, result) => {
+        con.query(sql, result_debate = (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) result_debate = result[i]
+                if(result[i].user_id === member.id) return result[i]
             }
         })
 
+        console.log(result_debate)
+
         // getting user's stats from sql database: general table
         sql = "SELECT * FROM general"
-        con.query(sql, (err, result) => {
+        con.query(sql, result_general = (err, result) => {
             if(err) throw err
             for(let i=0; i < result.length; i++){
                 console.log(i)
-                if(result[i].user_id === member.id) result_general = result[i]
+                if(result[i].user_id === member.id) return result[i]
             }
         })
         console.log(result_general)
@@ -66,8 +68,6 @@ module.exports = {
                 if(result[i].user_id === member.id) result_motivational = result[i]
             }
         })
-
-        console.log(result_debate)
 
         function bar(level, messages){
             function prog(messages, max){
