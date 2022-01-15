@@ -18,9 +18,9 @@ module.exports = {
         .setName("user")
         .setDescription("Get your Stats and Information"),
     async execute(interaction){
-        user = interaction.user
-        member = interaction.guild.members.cache.get(user.id)
-        auth = user.id
+        const user = interaction.user
+        const member = interaction.guild.members.cache.get(user.id)
+        const auth = user.id
 
         let results = []
 
@@ -37,8 +37,9 @@ module.exports = {
             console.log(member.id)
             for(let i=0; i < result.length; i++){
                 console.log(result[i].user_id)
-                if(result[i].user_id === member.id) console.log("niceeeeeeeee")
+                if(result[i].user_id === member.id) return console.log("niceeeeeeeee")
             }
+            return
         })
 
         // getting user's stats from sql database: general table
