@@ -18,9 +18,9 @@ module.exports = {
         .setName("user")
         .setDescription("Get your Stats and Information"),
     async execute(interaction){
-        user = interaction.user
-        member = interaction.guild.members.cache.get(user.id)
-        auth = user.id
+        const user = interaction.user
+        const member = interaction.guild.members.cache.get(user.id)
+        const auth = user.id
 
         con.connect((err) => {if(err)throw err;})
 
