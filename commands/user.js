@@ -67,6 +67,8 @@ module.exports = {
             }
         })
 
+        console.log(result_debate)
+
         function bar(level, messages){
             function prog(messages, max){
                 let bar = ""
