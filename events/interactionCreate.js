@@ -14,7 +14,7 @@ module.exports = {
         } catch(err){
             if(err) console.error(err)
 
-            await interaction,reply({
+            await interaction.reply({
                 content: "An error occured",
                 ephemeral: true
         })
