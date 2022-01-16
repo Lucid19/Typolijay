@@ -55,8 +55,6 @@ module.exports = {
             }
         }
 
-        console.log(results)
-
         function bar(level, messages){
             function prog(messages, max){
                 let bar = ":"
@@ -70,9 +68,6 @@ module.exports = {
                     }
                     
                 }
-                console.log(bar)
-                console.log(max)
-                console.log(messages)
                 return bar
             }
 
