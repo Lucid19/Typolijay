@@ -35,9 +35,9 @@ module.exports = {
             return new Promise((resolve, reject) => {
                 con.query(`SELECT * FROM ${tableName}`, (err, results) => {
                     if(err) return reject(err)
-                    for(const row in results){
-                        console.log(results)
-                        if(row.user_id === member.id) return resolve(results)
+                    for(let i = 0; i < results.length; i++){
+                        console.log(results[i])
+                        if(results[i].user_id === member.id) return resolve(results)
                     }
                     return resolve("User not found")
                 })
