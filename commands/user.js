@@ -63,7 +63,7 @@ module.exports = {
 
         function bar(level, messages){
             function prog(messages, max){
-                let bar = ""
+                const bar = ""
                 for(let i = 0; i < 10; i++){
                     if(messages > max/10){
                         bar.concat(":blue_square:")
@@ -72,6 +72,7 @@ module.exports = {
                     else{
                         bar.concat("black_large_square")
                     }
+                    console.log(bar)
                 }
                 return bar
             }
