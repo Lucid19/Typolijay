@@ -21,7 +21,7 @@ module.exports = {
         const user = interaction.user
         const member = interaction.guild.members.cache.get(user.id)
         const auth = user.id
-        const tables = ["debate", "general", "motivational", "meme"]
+        const tables = ["general", "debate", "motivational", "meme"]
 
         const results = []
 
@@ -36,8 +36,7 @@ module.exports = {
                 con.query(`SELECT * FROM ${tableName}`, (err, results) => {
                     if(err) return reject(err)
                     for(let i = 0; i < results.length; i++){
-                        console.log(results[i])
-                        if(results[i].user_id === member.id) return resolve(results)
+                        if(results[i].user_id === member.id) return resolve(results[i])
                     }
                     return resolve("User not found")
                 })
@@ -104,10 +103,10 @@ module.exports = {
         const levelEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s progress`)
             .setColor("RANDOM")
-            .addFields({name: "general", value: `lvl: ${results[2][1]} ${bar(results[2][1], results[2][2])}`},
-                       {name: "debate", value: `lvl: ${results[3][1]} ${bar(results[3][1], results[3][2])}`},
-                       {name: "motivational", value: `lvl: ${results[0][1]} ${bar(results[0][1], results[0][2])}`},
-                       {name: "meme", value: `lvl: ${results[1][1]} ${bar(results[1][1], results[1][2])}`})
+            .addFields({name: "general", value: `lvl: ${results[0][0]} ${bar(results[0][0], results[0][1])}`},
+                       {name: "debate", value: `lvl: ${results[1][0]} ${bar(results[1][0], results[1][1])}`},
+                       {name: "motivational", value: `lvl: ${results[2][0]} ${bar(results[2][0], results[2][1])}`},
+                       {name: "meme", value: `lvl: ${results[3][0]} ${bar(results[3][0], results[3][1])}`})
 
         // buttons displayed
         const row = new MessageActionRow()
