@@ -70,10 +70,13 @@ module.exports = {
                         messages -= max/10
                     }
                     else{
-                        bar.concat("black_large_square")
+                        bar.concat(":black_large_square:")
                     }
-                    console.log(bar)
+                    
                 }
+                console.log(bar)
+                console.log(max)
+                console.log(messages)
                 return bar
             }
 
