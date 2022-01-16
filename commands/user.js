@@ -38,6 +38,7 @@ module.exports = {
                     for(const row in results){
                         if(row.user_id === member.id) return resolve(results)
                     }
+                    return resolve("User not found")
                 })
             })
         }
@@ -47,7 +48,12 @@ module.exports = {
         for(const table of tables){
             try {
                 const result = await getResult(table)
-                setResult(result.level, result.messages)
+                if(result === "User not found"){
+                    console.log(`${result} in ${table}`)
+                }
+                else{
+                    setResult(result.level, result.messages)
+                }
             } catch(err){
                 console.log(`Couldnt retreive data from ${table}: ${err}`)
             }
