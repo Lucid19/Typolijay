@@ -25,8 +25,6 @@ module.exports = {
 
         const results = []
 
-        con.connect((err) => {if(err)throw err;})
-
         function setResult(level, messages){
             results.push([level, messages])
         }
@@ -57,8 +55,6 @@ module.exports = {
             }
         }
 
-        con.end()
-
         console.log(results)
 
         function bar(level, messages){
@@ -66,11 +62,11 @@ module.exports = {
                 let bar = ":"
                 for(let i = 0; i < 10; i++){
                     if(messages > max/10){
-                        bar.concat(":blue_square:")
+                        bar = bar.concat(":blue_square:")
                         messages -= max/10
                     }
                     else{
-                        bar.concat(":black_large_square:")
+                        bar = bar.concat(":black_large_square:")
                     }
                     
                 }
