@@ -1,6 +1,6 @@
 // discord.js
 const{ SlashCommandBuilder } = require("@discordjs/builders")
-const { MessageEmbed, MessageButton, MessageActionRow, edit} = require("discord.js")
+const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js")
 
 // packages
 const mysql = require("mysql")
