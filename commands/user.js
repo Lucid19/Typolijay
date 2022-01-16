@@ -21,54 +21,37 @@ module.exports = {
         const user = interaction.user
         const member = interaction.guild.members.cache.get(user.id)
         const auth = user.id
+        const tables = ["debate", "general", "motivational", "meme"]
 
-        let results = []
+        const results = []
 
         con.connect((err) => {if(err)throw err;})
 
-        function setResult(user_id, level, messages, array){
-            console.log(level, messages)
-            array.push([level, messages])
+        function setResult(level, messages){
+            results.push([level, messages])
         }
 
-        // getting user's stats from sql database: debate table
-        let sql = "SELECT * FROM debate"
-        con.query(sql, (err, result) => {
-            if(err) throw err
-            for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) console.log("eat")
-            }
-            return setResult(result[i].user_id, result[i].level, result[i].messages, results)
-        })
-
-        // getting user's stats from sql database: general table
-        sql = "SELECT * FROM general"
-        con.query(sql, (err, result) => {
-            if(err) throw err
-            for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages, results)
-            }
-        })
-
-        // getting user's stats from sql database: meme table
-        sql = "SELECT * FROM meme"
-        con.query(sql, (err, result) => {
-            if(err) throw err
-            for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages, results)
-            }
-        })
-
-        // getting user's stats from sql database: motivational table
-        sql = "SELECT * FROM motivational"
-        con.query(sql, (err, result) => {
-            if(err) throw err
-            for(let i=0; i < result.length; i++){
-                if(result[i].user_id === member.id) return setResult(result[i].user_id, result[i].level, result[i].messages, results)
-            }
-        })
+        function getResult(tableName) {
+            return new Promise((resolve, reject) => {
+                con.query(`SELECT * FROM ${tableName}`, (err, results) => {
+                    if(err) return reject(err)
+                    for(const row in results){
+                        if(row.user_id === member.id) return resolve(results)
+                    }
+                })
+            })
+        }
 
         con.end()
+
+        for(const table of tables){
+            try {
+                const result = await getResult(table)
+                setResult(result.level, result.messages)
+            } catch(err){
+                console.log(`Couldnt retreive data from ${table}: ${err}`)
+            }
+        }
 
         console.log(results)
 
