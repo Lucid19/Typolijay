@@ -36,7 +36,7 @@ module.exports = {
                 con.query(`SELECT * FROM ${tableName}`, (err, results) => {
                     if(err) return reject(err)
                     for(const row in results){
-                        console.log(row)
+                        console.log(results)
                         if(row.user_id === member.id) return resolve(results)
                     }
                     return resolve("User not found")
