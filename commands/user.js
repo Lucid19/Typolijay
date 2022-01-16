@@ -80,11 +80,11 @@ module.exports = {
                 return bar
             }
 
-            if(level === 0) prog(messages, 500)
-            else if(level === 1) prog(messages, 1000)
-            else if(level === 2) prog(messages, 1500)
-            else if(level === 3) prog(messages, 2000)
-            else if(level === 4) prog(messages, 2500)
+            if(level === 0) return prog(messages, 500)
+            else if(level === 1) return prog(messages, 1000)
+            else if(level === 2) return prog(messages, 1500)
+            else if(level === 3) return prog(messages, 2000)
+            else if(level === 4) return prog(messages, 2500)
             else if(level === 5) return "MAX"
         }
 
