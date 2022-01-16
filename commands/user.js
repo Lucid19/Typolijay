@@ -43,8 +43,6 @@ module.exports = {
             })
         }
 
-        con.end()
-
         for(const table of tables){
             try {
                 const result = await getResult(table)
@@ -58,6 +56,8 @@ module.exports = {
                 console.log(`Couldnt retreive data from ${table}: ${err}`)
             }
         }
+
+        con.end()
 
         console.log(results)
 
