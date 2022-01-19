@@ -56,7 +56,7 @@ module.exports = {
         }
 
         function bar(level, messages){
-            function prog(messages, max){
+            function prog(max){
                 let bar = ":"
                 for(let i = 0; i < 10; i++){
                     if(messages > max/10){
@@ -71,11 +71,11 @@ module.exports = {
                 return bar
             }
 
-            if(level === 0) return prog(messages, 500)
-            else if(level === 1) return prog(messages, 1000)
-            else if(level === 2) return prog(messages, 1500)
-            else if(level === 3) return prog(messages, 2000)
-            else if(level === 4) return prog(messages, 2500)
+            if(level === 0) return prog(500)
+            else if(level === 1) return prog(1000)
+            else if(level === 2) return prog(1500)
+            else if(level === 3) return prog(2000)
+            else if(level === 4) return prog(2500)
             else if(level === 5) return "MAX"
         }
 
