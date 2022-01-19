@@ -142,7 +142,6 @@ module.exports = {
             row.components[1].setDisabled(true)
             row.components[2].setDisabled(true)
             row.components[3].setDisabled(true)
-            return
         }
 
         // processes interactions
@@ -167,10 +166,10 @@ module.exports = {
                 row.components[2].setDisabled(true)
                 message.edit({embeds: [levelEmbed], components: [row]})
             }
-            else if(id === "exit") end()
+            else if(id === "exit") return end()
 
         collector.on('end', () => {
-            end()
+            return end()
         })
         })
     }
