@@ -165,6 +165,7 @@ module.exports = {
                 row.components[2].setDisabled(true)
                 row.components[3].setDisabled(true)
                 message.edit({components: [row]})
+                return
             }
 
         collector.on('end', () => {
