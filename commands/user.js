@@ -166,7 +166,10 @@ module.exports = {
                 row.components[2].setDisabled(true)
                 message.edit({embeds: [levelEmbed], components: [row]})
             }
-            else if(id === "exit") return end()
+            else if(id === "exit"){
+                end()
+                return
+            }
 
         collector.on('end', () => {
             return end()
