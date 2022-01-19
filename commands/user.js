@@ -135,7 +135,7 @@ module.exports = {
         }
 
         // collects all interactions
-        const collector = new interaction.channel.createMessageComponentCollector({ filter, time: 30000 })
+        const collector = interaction.message.createMessageComponentCollector({ filter, time: 30000 })
 
         // processes interactions
         collector.on('collect', (ButtonInteraction) => {
