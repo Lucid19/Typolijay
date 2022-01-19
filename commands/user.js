@@ -137,6 +137,14 @@ module.exports = {
         // collects all interactions
         const collector = message.createMessageComponentCollector({ filter, time: 30000 })
 
+        function end(){
+            row.components[0].setDisabled(true)
+            row.components[1].setDisabled(true)
+            row.components[2].setDisabled(true)
+            row.components[3].setDisabled(true)
+            return
+        }
+
         // processes interactions
         collector.on('collect', (ButtonInteraction) => {
             ButtonInteraction.deferUpdate()
@@ -159,14 +167,10 @@ module.exports = {
                 row.components[2].setDisabled(true)
                 message.edit({embeds: [levelEmbed], components: [row]})
             }
-            else if(id === "exit") collector.end()
+            else if(id === "exit") end()
 
         collector.on('end', () => {
-            row.components[0].setDisabled(true)
-            row.components[1].setDisabled(true)
-            row.components[2].setDisabled(true)
-            row.components[3].setDisabled(true)
-            return
+            end()
         })
         })
     }
