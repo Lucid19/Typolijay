@@ -118,7 +118,11 @@ module.exports = {
                 new MessageButton()
                     .setCustomId("progress")
                     .setLabel("progress")
-                    .setStyle("SECONDARY")
+                    .setStyle("SECONDARY"),
+                new MessageButton()
+                    .setCustomId("exit")
+                    .setLabel("X")
+                    .setStyle("DANGER")
             )
 
         // message itself as a variable
@@ -131,7 +135,7 @@ module.exports = {
         }
 
         // collects all interactions
-        const collector = interaction.channel.createMessageComponentCollector({ filter })
+        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 30000 })
 
         // processes interactions
         collector.on('collect', (ButtonInteraction) => {
@@ -155,6 +159,14 @@ module.exports = {
                 row.components[2].setDisabled(true)
                 message.edit({embeds: [levelEmbed], components: [row]})
             }
+            else if(id === "exit") return collector.stop()
+
+        collector.on('end', () => {
+            row.components[0].setDisabled(true)
+            row.components[1].setDisabled(true)
+            row.components[2].setDisabled(true)
+            return
+        })
         })
     }
 }
