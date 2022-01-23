@@ -24,6 +24,7 @@ module.exports = {
         
         process("general")
 
+        console.log(message.channel.id)
         // memes
         if(message.channel.id === memes){
             process("memes")
