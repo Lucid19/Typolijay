@@ -2,7 +2,7 @@ const mysql = require("mysql")
 const config = require("../config.json")
 
 module.exports = {
-    name: "message",
+    name: "messageCreate",
     async execute(message){
         const user = message.author
         const memes = 898478900596862996
