@@ -26,7 +26,7 @@ module.exports = {
 
         // memes
         if(message.channel.id === memes){
-            process("memes")
+            process("meme")
         }
         // debate
         else if(message.channel.id === debate){
