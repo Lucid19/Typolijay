@@ -5,9 +5,9 @@ module.exports = {
     name: "messageCreate",
     async execute(message){
         const user = message.author
-        const memes = 898478900596862996
-        const debate = 907549432382386207
-        const motivational = 907551299577458688
+        const memes = "898478900596862996"
+        const debate = "907549432382386207"
+        const motivational = "907551299577458688"
 
         const con = mysql.createConnection({
             host: config.host,
