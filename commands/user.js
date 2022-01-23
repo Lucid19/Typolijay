@@ -6,13 +6,6 @@ const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js")
 const mysql = require("mysql")
 const config = require("../config.json")
 
-const con = mysql.createConnection({
-    host: config.host,
-    user: config.user,
-    password: config.password,
-    database: config.database
-})
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("user")
@@ -22,6 +15,13 @@ module.exports = {
         const member = interaction.guild.members.cache.get(user.id)
         const auth = user.id
         const tables = ["general", "debate", "motivational", "meme"]
+
+        const con = mysql.createConnection({
+            host: config.host,
+            user: config.user,
+            password: config.password,
+            database: config.database
+        })
 
         const results = []
 
@@ -36,7 +36,7 @@ module.exports = {
                     for(let i = 0; i < results.length; i++){
                         if(results[i].user_id === member.id) return resolve(results[i])
                     }
-                    return resolve("User not found")
+                    return resolve(`User not found in ${tableName}`)
                 })
             })
         }
