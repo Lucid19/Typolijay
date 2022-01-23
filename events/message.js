@@ -17,7 +17,7 @@ module.exports = {
         })
 
         function process(tableName) {
-            con.query(`UPDATE ${tableName} SET messages = messages+1 WHERE user_id = ${user.id}`, (err, results) => {
+            con.query(`UPDATE ${tableName} SET messages = messages+1 WHERE user_id = ${user.id}`, (err) => {
                 if(err) throw err
             })
         }
@@ -36,5 +36,7 @@ module.exports = {
         else if(message.channel.id === motivational){
             process("motivational")
         }
+
+        con.end()
     }
 }
