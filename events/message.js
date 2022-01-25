@@ -36,7 +36,26 @@ module.exports = {
         else if(message.channel.id === motivational){
             process("motivational")
         }
-
+        
+        for(const table in tables){
+            con.query(`SELECT * FROM ${table} WHERE user_id = ${user.id}`, (err, result) => {
+                if(result.level === 0 && result.messages === 500){
+                    
+                }
+                else if(result.level === 1 && result.messages === 1000){
+                    
+                }
+                else if(result.level === 2 && result.messages === 1500){
+                    
+                }
+                else if(result.level === 3 && result.messages === 2000){
+                    
+                }
+                else if(result.level === 4 && result.messages === 2500){
+                    
+                }
+            })
+        }
         con.end()
     }
 }
