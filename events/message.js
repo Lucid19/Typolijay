@@ -30,15 +30,15 @@ module.exports = {
             })
         }
 
-        function rolesRemove(role){
-            let role = message.guild.roles.cache.find(r => r.id === role)
+        function rolesRemove(roleId){
+            let role = message.guild.roles.cache.find(r => r.id === roleId)
             user.roles.remove(role)
 
             user.channel.send(`Well done ${user.mention} on acheiving ${role}`)
         }
 
-        function rolesAdd(role){
-            let role = message.guild.roles.cache.find(r => r.id === role)
+        function rolesAdd(roleId){
+            let role = message.guild.roles.cache.find(r => r.id === roleId)
             user.roles.add(role)
         }
         
