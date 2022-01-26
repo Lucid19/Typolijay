@@ -8,7 +8,7 @@ module.exports = {
         const memes = "898478900596862996"
         const debate = "907549432382386207"
         const motivational = "907551299577458688"
-        const tables = ["debate", "motivational", "memes", "general"]
+        const tables = ["debate", "motivational", "meme", "general"]
         const roles = [[],[],[],[]]
 
         const con = mysql.createConnection({
