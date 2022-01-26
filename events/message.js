@@ -29,6 +29,18 @@ module.exports = {
                 if(err) throw err
             })
         }
+
+        function rolesRemove(role){
+            let role = message.guild.roles.cache.find(r => r.id === role)
+            user.roles.remove(role)
+
+            user.channel.send(`Well done ${user.mention} on acheiving ${role}`)
+        }
+
+        function rolesAdd(role){
+            let role = message.guild.roles.cache.find(r => r.id === role)
+            user.roles.add(role)
+        }
         
         process("general")
 
@@ -49,45 +61,31 @@ module.exports = {
             con.query(`SELECT * FROM ${table} WHERE user_id = ${user.id}`, (err, result) => {
                 if(result.level === 0 && result.messages === 500){
                     level(tables[i])
-                    
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][0])
-                    user.roles.add(role)
+                    rolesAdd(roles[i][0])
                 }
                 else if(result.level === 1 && result.messages === 1000){
                     level(tables[i])
                     
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][1)
-                    user.roles.add(role)
-                    
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][0)
-                    user.roles.remove(role)
+                    rolesAdd(roles[i][1])
+                    rolesRemove(roles[i][0])
                 }
                 else if(result.level === 2 && result.messages === 1500){
                     level(tables[i])
                     
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][2)
-                    user.roles.add(role)
-                    
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][1)
-                    user.roles.remove(role)
+                    rolesAdd(roles[i][2])
+                    rolesRemove(roles[i][1])
                 }
                 else if(result.level === 3 && result.messages === 2000){
                     level(tables[i])
                     
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][3)
-                    user.roles.add(role)
-                    
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][2)
-                    user.roles.remove(role)
+                    rolesAdd(roles[i][3])
+                    rolesRemove(roles[i][2])
                 }
                 else if(result.level === 4 && result.messages === 2500){
                     level(tables[i])
                     
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][4])
-                    user.roles.add(role)
-                    
-                    let role = message.guild.roles.cache.find(r => r.id === roles[i][3)
-                    user.roles.remove(role)
+                    rolesAdd(roles[i][4])
+                    rolesRemove(roles[i][3])
                 }
             })
         }
