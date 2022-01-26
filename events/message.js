@@ -24,8 +24,8 @@ module.exports = {
             })
         }
         
-        function level(table){
-            con.query(`UPDATE ${table} SET messages = 0 AND SET level = level+1 WHERE user_id = ${user.id}`, (err) => {
+        function level(tableName){
+            con.query(`UPDATE ${tableName} SET messages = 0 AND SET level = level+1 WHERE user_id = ${user.id}`, (err) => {
                 if(err) throw err
             })
         }
@@ -58,7 +58,8 @@ module.exports = {
         }
         
         for(let i = 0; i < tables.length; i++){
-            con.query(`SELECT * FROM ${table} WHERE user_id = ${user.id}`, (err, result) => {
+            con.query(`SELECT * FROM ${tables[i]} WHERE user_id = ${user.id}`, (err, result) => {
+                if(err) throw err
                 if(result.level === 0 && result.messages === 500){
                     level(tables[i])
                     rolesAdd(roles[i][0])
