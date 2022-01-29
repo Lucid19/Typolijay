@@ -5,12 +5,17 @@ module.exports = {
     name: "messageCreate",
     async execute(message){
         const user = message.author
+
+        // ID's
         const memes = "898478900596862996"
         const debate = "907549432382386207"
         const motivational = "907551299577458688"
+
+        // data
         const tables = ["debate", "motivational", "meme", "general"]
         const roles = [[],[],[],[]]
 
+        // Connecting to the database
         const con = mysql.createConnection({
             host: config.host,
             user: config.user,
@@ -18,18 +23,21 @@ module.exports = {
             database: config.database
         })
 
+        // processes the request
         function process(tableName) {
             con.query(`UPDATE ${tableName} SET messages = messages+1 WHERE user_id = ${user.id}`, (err) => {
                 if(err) throw err
             })
         }
         
+        // levels up the user
         function level(tableName){
             con.query(`UPDATE ${tableName} SET messages = 0 AND SET level = level+1 WHERE user_id = ${user.id}`, (err) => {
                 if(err) throw err
             })
         }
 
+        // adding and removing the roles
         function rolesRemove(roleId){
             let role = message.guild.roles.cache.find(r => r.id === roleId)
             user.roles.remove(role)
@@ -41,22 +49,20 @@ module.exports = {
             let role = message.guild.roles.cache.find(r => r.id === roleId)
             user.roles.add(role)
         }
-        
-        process("general")
 
-        // memes
+        // processing requests
+        process("general")
         if(message.channel.id === memes){
             process("meme")
         }
-        // debate
         else if(message.channel.id === debate){
             process("debate")
         }
-        // 
         else if(message.channel.id === motivational){
             process("motivational")
         }
         
+        // levelling
         for(let i = 0; i < tables.length; i++){
             con.query(`SELECT * FROM ${tables[i]} WHERE user_id = ${user.id}`, (err, result) => {
                 if(err) throw err
