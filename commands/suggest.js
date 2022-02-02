@@ -4,7 +4,7 @@ const { MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton } = req
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setname("suggest")
+        .setName("suggest")
         .setDescription("Send your suggestions or topical questions for review!"),
 
     async execute(interaction){
