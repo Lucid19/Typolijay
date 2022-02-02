@@ -43,13 +43,13 @@ module.exports = {
             const buttonRow = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
-                        .setTitle("Send")
+                        .setLabel("Send")
                         .setCustomId("sent")
                         .setStyle("SECONDARY")
                         .setDisabled(true),
 
                     new MessageButton()
-                        .setTitle("X")
+                        .setLabel("X")
                         .setCustomId("exit")
                         .setStyle("DANGER")
         )
