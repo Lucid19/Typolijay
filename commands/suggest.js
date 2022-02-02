@@ -13,7 +13,7 @@ module.exports = {
         const suggestionEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
             .setColor("RANDOM")
-            .addField({name: "Instructions", value: "Hi! Please look at the selection menus below  the embed and specify your suggestion, once you have specified all the fields, just click on the blue arrow to submit it to us!"})
+            .addFields({name: "Instructions", value: "Hi! Please look at the selection menus below  the embed and specify your suggestion, once you have specified all the fields, you'll be able to submit it!"})
 
         const selectRow = new MessageActionRow()
             .addComponents(
