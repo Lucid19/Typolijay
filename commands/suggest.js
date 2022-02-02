@@ -37,7 +37,7 @@ module.exports = {
                     .setPlaceholder("Category")
                     .addOptions([
                         { label: "Debate", description: "Suggest a topic", value: "debate-topic"},
-                        { label: "Server", description: "Any inquiries?", value: "server-inquiry"}]),
+                        { label: "Server", description: "Any inquiries?", value: "server-inquiry"}])
         
         const buttonRow = new MessageActionRow()
             .addComponents(
