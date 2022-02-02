@@ -16,7 +16,7 @@ module.exports = {
             .addFields({name: "Instructions", value: "Hi! Please look at the selection menus below  the embed and specify your suggestion, once you have specified all the fields, you'll be able to submit it!"})
 
         const select = new MessageActionRow()
-            .addOptions(
+            .addComponents(
                 new MessageSelectMenu()
                     .setCustomId("type")
                     .setPlaceholder("Type")
@@ -25,7 +25,7 @@ module.exports = {
                         {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "question"}]))
         
         const question = new MessageActionRow()
-            .addOptions(
+            .addComponents(
                 new MessageSelectMenu()
                     .setCustomId("category-suggestion")
                     .setPlaceholder("Category")
@@ -35,7 +35,7 @@ module.exports = {
                         {label: "Events", description: "regarding certain events to be held or discussed", value: "events-suggestion"}]))
 
         const category = new MessageActionRow()
-            .addOptions(
+            .addComponents(
                 new MessageSelectMenu()
                     .setCustomId("category-topic")
                     .setPlaceholder("Category")
