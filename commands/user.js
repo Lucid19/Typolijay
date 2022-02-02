@@ -79,7 +79,6 @@ module.exports = {
             else if(level === 5) return "MAX"
         }
 
-        console.log(results)
         // initial interface
         const userEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s profile`)
