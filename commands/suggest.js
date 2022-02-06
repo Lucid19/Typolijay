@@ -112,7 +112,7 @@ module.exports = {
                     buttonRow.components[0].setDisabled(true)
                     buttonRow.components[1].setDisabled(true)
 
-                    moderator.send()
+                    moderator.send({embeds: [moderatorEmbed]})
                 }
             }
             message.edit({components: [select, set, buttonRow]})
