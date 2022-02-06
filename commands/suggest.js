@@ -5,9 +5,10 @@ const { MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton} = requ
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("suggest")
-        .setDescription("Send your suggestions or topical questions for review!"),
+        .setDescription("Send your suggestions or topical questions for review!")
+        .options([{name: "suggestion", description: "type suggestion", required: true}]),
 
-    async execute(interaction){
+    async execute(interaction, suggestion){
         const user = interaction.user
         const moderator = interaction.guild.channels.cache.get("939990739939639338")
 
@@ -110,7 +111,7 @@ module.exports = {
                         .setTimestamp()
                         .setColor("RANDOM")
                         .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
-                                   {name: "Suggestion", value: "yes", inline: true})
+                                   {name: "User", value: "yes", inline: true})
                                    
                     moderator.send({embeds: [moderatorEmbed]})
                 }
