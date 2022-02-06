@@ -8,7 +8,7 @@ module.exports = {
         .setDescription("Send your suggestions or topical questions for review!")
         .options([{name: "suggestion", description: "type suggestion", required: true}]),
 
-    async execute(interaction, suggestion){
+    async execute(interaction, suggest){
         const user = interaction.user
         const moderator = interaction.guild.channels.cache.get("939990739939639338")
 
