@@ -131,7 +131,7 @@ module.exports = {
         // used to check whether the interaction is by author
         const filter = (interaction) => {
             if(interaction.user.id === auth) return true
-            return interaction.reply({content: "you are not the author", ephemeral: true})
+            return await interaction.reply({content: "you are not the author", ephemeral: true})
         }
 
         // collects all interactions
@@ -139,32 +139,32 @@ module.exports = {
 
         // processes interactions
         collector.on('collect', (ButtonInteraction) => {
-            ButtonInteraction.deferUpdate()
+            await ButtonInteraction.deferUpdate()
             const id = ButtonInteraction.customId
             if(id === "stats"){
                 row.components[0].setDisabled(false)
                 row.components[1].setDisabled(true)
                 row.components[2].setDisabled(false)
-                message.edit({embeds: [statEmbed], components: [row]})
+                await message.edit({embeds: [statEmbed], components: [row]})
             }
             else if(id === "back"){
                 row.components[0].setDisabled(true)
                 row.components[1].setDisabled(false)
                 row.components[2].setDisabled(false)
-                message.edit({embeds: [userEmbed], components: [row]})
+                await message.edit({embeds: [userEmbed], components: [row]})
             }
             else if(id === "progress"){
                 row.components[0].setDisabled(false)
                 row.components[1].setDisabled(false)
                 row.components[2].setDisabled(true)
-                message.edit({embeds: [levelEmbed], components: [row]})
+                await message.edit({embeds: [levelEmbed], components: [row]})
             }
             else if(id === "exit"){
                 row.components[0].setDisabled(true)
                 row.components[1].setDisabled(true)
                 row.components[2].setDisabled(true)
                 row.components[3].setDisabled(true)
-                message.edit({components: [row]})
+                await message.edit({components: [row]})
                 return
             }
 
@@ -173,7 +173,7 @@ module.exports = {
             row.components[1].setDisabled(true)
             row.components[2].setDisabled(true)
             row.components[3].setDisabled(true)
-            message.edit({components: [row]})
+            await message.edit({components: [row]})
             return
         })
         })

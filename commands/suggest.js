@@ -68,7 +68,7 @@ module.exports = {
             const value = interaction.value
 
             if(id === "type"){
-                message.edit({components: [select, category, buttonRow]})
+                await message.edit({components: [select, category, buttonRow]})
                 console.log(value)
             }
         })
