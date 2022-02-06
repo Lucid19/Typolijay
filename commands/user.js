@@ -13,7 +13,6 @@ module.exports = {
     async execute(interaction){
         const user = interaction.user
         const member = interaction.guild.members.cache.get(user.id)
-        const auth = user.id
         const tables = ["general", "debate", "motivational", "meme"]
 
         const con = mysql.createConnection({
@@ -130,7 +129,7 @@ module.exports = {
 
         // used to check whether the interaction is by author
         const filter = (interaction) => {
-            if(interaction.user.id === auth) return true
+            if(interaction.user.id === user.id) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
         }
 

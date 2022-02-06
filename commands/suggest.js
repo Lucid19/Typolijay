@@ -60,7 +60,7 @@ module.exports = {
         const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
 
         const filter = (interaction) => {
-            if(interaction.user.id === auth) return true
+            if(interaction.user.id === user.id) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
         }
 
