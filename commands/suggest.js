@@ -19,13 +19,6 @@ module.exports = {
             .setColor("RANDOM")
             .addFields({name: "Instructions", value: "Hi! Please look at the selection menus below  the embed and specify your suggestion, once you have specified all the fields, you'll be able to submit it!"})
 
-        const moderatorEmbed = new MessageEmbed()
-            .setTitle(`${user.username}'s suggestion`)
-            .setTimestamp()
-            .setColor("RANDOM")
-            .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
-                       {name: "Suggestion", value: "yes", inline: true})
-
         const select = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
@@ -112,6 +105,13 @@ module.exports = {
                     buttonRow.components[0].setDisabled(true)
                     buttonRow.components[1].setDisabled(true)
 
+                    const moderatorEmbed = new MessageEmbed()
+                        .setTitle(`${user.username}'s suggestion`)
+                        .setTimestamp()
+                        .setColor("RANDOM")
+                        .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
+                                   {name: "Suggestion", value: "yes", inline: true})
+                                   
                     moderator.send({embeds: [moderatorEmbed]})
                 }
             }
