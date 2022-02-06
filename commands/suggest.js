@@ -61,7 +61,7 @@ module.exports = {
         const message = interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
 
         client.on("interactionCreate", async interaction => {
-            if(!interaction.isSelectMenus()) return
+            if(!interaction.isSelectMenu()) return
             await interaction.deferUpdate()
 
             const id = interaction.customId
