@@ -25,7 +25,7 @@ module.exports = {
                         {label: "Suggestion", description: "What can we improve?", value: "suggestion"},
                         {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "question"}]))
         
-        const question = new MessageActionRow()
+        const suggestion = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
                     .setCustomId("category-suggestion")
@@ -35,7 +35,7 @@ module.exports = {
                         {label: "Channels", description: "What about the channels?", value: "channels-suggestion"},
                         {label: "Events", description: "regarding certain events to be held or discussed", value: "events-suggestion"}]))
 
-        const category = new MessageActionRow()
+        const question = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
                     .setCustomId("category-topic")
