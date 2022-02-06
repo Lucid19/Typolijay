@@ -69,11 +69,11 @@ module.exports = {
             const value = interaction.values
 
             if(id === "type" && value[0] === "suggestion"){
-                await message.edit({components: [select, category, buttonRow]})
+                await message.edit({components: [category, buttonRow]})
                 console.log(value)
             }
             else if(id === "type" && value[0] === "question"){
-                await message.edit({components: [select, question, buttonRow]})
+                await message.edit({components: [question, buttonRow]})
                 console.log(value)
             }
         })
