@@ -67,7 +67,7 @@ module.exports = {
             const id = interaction.customId
             const value = interaction.value
 
-            if(id === "type" && value === "suggestion"){
+            if(id === "type"){
                 message.edit({components: [select, category, buttonRow]})
             }
         })
