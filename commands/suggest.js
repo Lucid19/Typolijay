@@ -78,12 +78,12 @@ module.exports = {
                 set = suggestion
             }
             else if(id === "type" && value[0] === "question"){
-                buttonRow[0].setDisabled(true)
+                buttonRow.components[0].setDisabled(true)
                 typeValue = value[0]
                 set = question
             }
             else{
-                buttonRow[0].setDisabled(false)
+                buttonRow.components[0].setDisabled(false)
                 categoryValue = value[0]
             }
             await message.edit({components: [select, set, buttonRow]})
