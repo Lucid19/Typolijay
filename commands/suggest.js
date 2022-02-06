@@ -63,11 +63,17 @@ module.exports = {
         client.on("interactionCreate", async interaction => {
             if(!interaction.isSelectMenu()) return
 
+            await interaction.deferUpdate()
+
             const id = interaction.customId
             const value = interaction.values
 
-            if(id === "type"){
+            if(id === "type" && value[0] === "suggestion"){
                 await message.edit({components: [select, category, buttonRow]})
+                console.log(value)
+            }
+            else if(id === "type" && value[0] === "question"){
+                await message.edit({components: [select, question, buttonRow]})
                 console.log(value)
             }
         })
