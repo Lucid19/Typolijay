@@ -59,6 +59,7 @@ module.exports = {
         )
         
         const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
+        var set = null
 
         client.on("interactionCreate", async interaction => {
             if(!interaction.isSelectMenu()) return
@@ -69,13 +70,20 @@ module.exports = {
             const value = interaction.values
 
             if(id === "type" && value[0] === "suggestion"){
-                await message.edit({components: [select, category, buttonRow]})
-                console.log(value)
+                buttonRow[0].setDisabled(true)
+                typeValue = value[0]
+                set = suggestion
             }
             else if(id === "type" && value[0] === "question"){
-                await message.edit({components: [select, question, buttonRow]})
-                console.log(value)
+                buttonRow[0].setDisabled(true)
+                typeValue = value[0]
+                set = question
             }
-        })
+            else{
+                buttonRow[0].setDisabled(false)
+                categoryValue = value[0]
+            }
+            await message.edit({components: [select, set, buttonRow]})
+        })  
     }
 }
