@@ -9,7 +9,6 @@ module.exports = {
 
     async execute(interaction){
         const user = interaction.user
-        const client = interaction.client
 
         const suggestionEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
@@ -59,34 +58,43 @@ module.exports = {
         )
         
         const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
+
+        const filter = (interaction) => {
+            if(interaction.user.id === auth) return true
+            return interaction.reply({content: "you are not the author", ephemeral: true})
+        }
+
+        const collector = message.createMessageComponentCollector({ filter, time: 30000 })
         
         var set
         var typeValue
         var categoryValue
 
-        client.on("interactionCreate", async interaction => {
-            if(!interaction.isSelectMenu()) return
-
-            await interaction.deferUpdate()
+        collector.on('collect', interaction => {
+            interaction.deferUpdate()
 
             const id = interaction.customId
-            const value = interaction.values
 
-            if(id === "type" && value[0] === "suggestion"){
-                buttonRow.components[0].setDisabled(true)
-                typeValue = value[0]
-                set = suggestion
+            if(interaction.isSelectMenu()){
+                const value = interaction.values
+
+                if(id === "type" && value[0] === "suggestion"){
+                    buttonRow.components[0].setDisabled(true)
+                    typeValue = value[0]
+                    set = suggestion
+                }
+                else if(id === "type" && value[0] === "question"){
+                    buttonRow.components[0].setDisabled(true)
+                    typeValue = value[0]
+                    set = question
+                }
+                else{
+                    buttonRow.components[0].setDisabled(false)
+                    categoryValue = value[0]
+                }
             }
-            else if(id === "type" && value[0] === "question"){
-                buttonRow.components[0].setDisabled(true)
-                typeValue = value[0]
-                set = question
-            }
-            else{
-                buttonRow.components[0].setDisabled(false)
-                categoryValue = value[0]
-            }
-            await message.edit({components: [select, set, buttonRow]})
-        })  
+            message.edit({components: [select, set, buttonRow]})
+        })
+        
     }
 }
