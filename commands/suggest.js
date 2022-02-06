@@ -59,7 +59,10 @@ module.exports = {
         )
         
         const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
-        var set = null
+        
+        var set
+        var typeValue
+        var categoryValue
 
         client.on("interactionCreate", async interaction => {
             if(!interaction.isSelectMenu()) return
