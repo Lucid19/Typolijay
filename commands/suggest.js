@@ -73,7 +73,7 @@ module.exports = {
             const value = interaction.values
 
             if(id === "type" && value[0] === "suggestion"){
-                buttonRow[0].setDisabled(true)
+                buttonRow.components[0].setDisabled(true)
                 typeValue = value[0]
                 set = suggestion
             }
