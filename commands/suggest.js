@@ -1,6 +1,6 @@
 // discord.js
 const{ SlashCommandBuilder} = require("@discordjs/builders")
-const { MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton, Message } = require("discord.js")
+const { MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButto} = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,6 +9,7 @@ module.exports = {
 
     async execute(interaction){
         const user = interaction.user
+        const client = interaction.client
 
         const suggestionEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
@@ -58,5 +59,17 @@ module.exports = {
         )
         
         const message = interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
+
+        client.on("interactionCreate", async interaction => {
+            if(!interaction.isSelectMenus()) return
+            await interaction.deferUpdate()
+
+            const id = interaction.customId
+            const value = interaction.value
+
+            if(id === "type" && value === "suggestion"){
+                message.edit({components: [select, category, buttonRow]})
+            }
+        })
     }
 }
