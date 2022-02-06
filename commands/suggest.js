@@ -62,10 +62,9 @@ module.exports = {
 
         client.on("interactionCreate", async interaction => {
             if(!interaction.isSelectMenu()) return
-            await interaction.deferUpdate()
 
             const id = interaction.customId
-            const value = interaction.value
+            const value = interaction.values
 
             if(id === "type"){
                 await message.edit({components: [select, category, buttonRow]})
