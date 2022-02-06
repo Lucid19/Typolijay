@@ -9,7 +9,7 @@ module.exports = {
 
     async execute(interaction){
         const user = interaction.user
-        const moderator = interaction.guild.cache.get("")
+        const moderator = interaction.guild.cache.get("939990739939639338")
 
         var typeValue
         var categoryValue
@@ -21,6 +21,7 @@ module.exports = {
 
         const moderatorEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
+            .setTimestamp()
             .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
                        {name: "Suggestion", value: "", inline: true})
 
