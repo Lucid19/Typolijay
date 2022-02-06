@@ -9,7 +9,7 @@ module.exports = {
 
     async execute(interaction){
         const user = interaction.user
-        const moderator = interaction.guild.cache.get("939990739939639338")
+        const moderator = user.guild.cache.get("939990739939639338")
 
         var typeValue
         var categoryValue
