@@ -9,11 +9,20 @@ module.exports = {
 
     async execute(interaction){
         const user = interaction.user
+        const moderator = interaction.guild.cache.get("")
+
+        var typeValue
+        var categoryValue
 
         const suggestionEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
             .setColor("RANDOM")
             .addFields({name: "Instructions", value: "Hi! Please look at the selection menus below  the embed and specify your suggestion, once you have specified all the fields, you'll be able to submit it!"})
+
+        const moderatorEmbed = new MessageEmbed()
+            .setTitle(`${user.username}'s suggestion`)
+            .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
+                       {name: "Suggestion", value: "", inline: true})
 
         const select = new MessageActionRow()
             .addComponents(
@@ -67,8 +76,6 @@ module.exports = {
         const collector = message.createMessageComponentCollector({ filter, time: 30000 })
         
         var set
-        var typeValue
-        var categoryValue
 
         collector.on('collect', interaction => {
             interaction.deferUpdate()
@@ -91,6 +98,19 @@ module.exports = {
                 else{
                     buttonRow.components[0].setDisabled(false)
                     categoryValue = value[0]
+                }
+            }
+            else{
+                if(id === "exit"){
+                    buttonRow.components[0].setDisabled(true)
+                    buttonRow.components[1].setDisabled(true)
+                    return
+                }
+                else if(id === "sent"){
+                    buttonRow.components[0].setDisabled(true)
+                    buttonRow.components[1].setDisabled(true)
+
+                    moderator.send()
                 }
             }
             message.edit({components: [select, set, buttonRow]})
