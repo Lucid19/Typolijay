@@ -24,7 +24,7 @@ module.exports = {
             .setTimestamp()
             .setColor("RANDOM")
             .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
-                       {name: "Suggestion", value: "", inline: true})
+                       {name: "Suggestion", value: "yes", inline: true})
 
         const select = new MessageActionRow()
             .addComponents(
