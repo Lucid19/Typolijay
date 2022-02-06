@@ -58,7 +58,7 @@ module.exports = {
                     .setStyle("DANGER")
         )
         
-        const message = interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
+        const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
 
         client.on("interactionCreate", async interaction => {
             if(!interaction.isSelectMenu()) return
@@ -69,6 +69,7 @@ module.exports = {
 
             if(id === "type"){
                 message.edit({components: [select, category, buttonRow]})
+                console.log(value)
             }
         })
     }
