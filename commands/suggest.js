@@ -22,6 +22,7 @@ module.exports = {
         const moderatorEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
             .setTimestamp()
+            .setColor("RANDOM")
             .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
                        {name: "Suggestion", value: "", inline: true})
 
