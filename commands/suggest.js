@@ -8,7 +8,7 @@ module.exports = {
         .setDescription("Send your suggestions or topical questions for review!")
         .addStringOption(option => option.setName("Suggestion").setDescription("What do you suggest?").setRequired(true)),
 
-    async execute(interaction, suggest){
+    async execute(interaction){
         const user = interaction.user
         const moderator = interaction.guild.channels.cache.get("939990739939639338")
 
@@ -117,11 +117,6 @@ module.exports = {
                 }
             }
             message.edit({components: [select, set, buttonRow]})
-        })
-        collector.on("end", () => {
-            buttonRow.components[0].setDisabled(true)
-            buttonRow.components[1].setDisabled(true)
-            return
         })
         
     }
