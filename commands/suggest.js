@@ -6,8 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("suggest")
         .setDescription("Send your suggestions or topical questions for review!")
-        .addStringOption(option => option.setName("Suggestion").setDescription("What do you suggest?").setRequired(true))
-        ,
+        .addStringOption(option => option.setName("Suggestion").setDescription("What do you suggest?").setRequired(true)),
 
     async execute(interaction, suggest){
         const user = interaction.user
@@ -118,6 +117,11 @@ module.exports = {
                 }
             }
             message.edit({components: [select, set, buttonRow]})
+        })
+        collector.on("end", () => {
+            buttonRow.components[0].setDisabled(true)
+            buttonRow.components[1].setDisabled(true)
+            return
         })
         
     }
