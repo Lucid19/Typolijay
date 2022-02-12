@@ -6,14 +6,19 @@ module.exports = {
     async execute(message){
         const user = message.author
 
-        // ID's
-        const memes = "898478900596862996"
-        const debate = "907549432382386207"
-        const motivational = "907551299577458688"
-
         // data
+        // MYSQL
         const tables = ["debate", "motivational", "meme", "general"]
-        const roles = [[],[],[],[]]
+
+        // roles data
+        // general
+        const roles = [[[config.newcomer],[config.novice],[config.regular],[config.pro],[config.veteran]], 
+        // debate
+                       [[config.debater],[config.debaterGreenhorn],[config.solidDebater],[config.proDebater],[config.masterDebater]], 
+        // motivational
+                       [[config.positive],[config.motivator],[config.serverMotivator],[config.superMotivator],[config.topMotivator]], 
+        // memes
+                       [[config.memerInTraining],[config.memerStudent],[config.memerPHD],[config.masterMemer],[config.dankMemer]]]
 
         // Connecting to the database
         const con = mysql.createConnection({
@@ -52,13 +57,13 @@ module.exports = {
 
         // processing requests
         process("general")
-        if(message.channel.id === memes){
+        if(message.channel.id === config.memeChannel){
             process("meme")
         }
-        else if(message.channel.id === debate){
+        else if(message.channel.id === config.debateChannel){
             process("debate")
         }
-        else if(message.channel.id === motivational){
+        else if(message.channel.id === config.motivationalChannel){
             process("motivational")
         }
         

@@ -28,6 +28,14 @@ module.exports = {
             results.push([level, messages])
         }
 
+        function disable(){
+            row.components[0].setDisabled(true)
+            row.components[1].setDisabled(true)
+            row.components[2].setDisabled(true)
+            row.components[3].setDisabled(true)
+            message.edit({components: [row]})
+        }
+
         function getResult(tableName) {
             return new Promise((resolve, reject) => {
                 con.query(`SELECT * FROM ${tableName}`, (err, results) => {
@@ -159,20 +167,12 @@ module.exports = {
                 message.edit({embeds: [levelEmbed], components: [row]})
             }
             else if(id === "exit"){
-                row.components[0].setDisabled(true)
-                row.components[1].setDisabled(true)
-                row.components[2].setDisabled(true)
-                row.components[3].setDisabled(true)
-                message.edit({components: [row]})
+                disable()
                 return
             }
 
         collector.on('end', () => {
-            row.components[0].setDisabled(true)
-            row.components[1].setDisabled(true)
-            row.components[2].setDisabled(true)
-            row.components[3].setDisabled(true)
-            message.edit({components: [row]})
+            disable()
             return
         })
         })

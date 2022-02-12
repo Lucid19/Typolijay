@@ -1,8 +1,38 @@
 {
     "token" : "OTE4NTY0Njk0NzgzMDUzOTI0.YbJGCQ.6W0_DAoz3bwQWukTLJnLCjq_aNY",
     "GUILD_ID" : "856938684612214845",
+
     "host" : "eu-cdbr-west-02.cleardb.net",
     "user" : "b019edfd930bb5",
     "password" : "fd25401a",
-    "database" : "heroku_cf001209575d7ba"
+    "database" : "heroku_cf001209575d7ba",
+
+    "memeChannel" : "898478900596862996",
+    "motivationalChannel" : "907551299577458688",
+    "debateChannel" : "907549432382386207",
+
+    "veteran" : "942084627030507580",
+    "pro" : "942084711868678224",
+    "regular" : "942084412407959583",
+    "novice" : "942084510890229850",
+    "newcomer" : "942084236163297290",
+
+    "masterDebater" : "942080518843940864",
+    "proDebater" : "942080414749704232",
+    "solidDebater" : "942084170228830310",
+    "debaterGreenhorn" : "942084091409489961",
+    "debater" : "942083852107649034",
+
+    "topMotivator" : "942085001745412096",
+    "superMotivator" : "942085635982889020",
+    "serverMotivator" : "942084890558607400",
+    "motivator" : "942084796090286190",
+    "positive" : "942085757106012160",
+
+    "dankMemer" : "942085769311432704",
+    "masterMemer" : "942085752886550568",
+    "memerPHD" : "942085720091275274",
+    "memerStudent" : "942085765423329363",
+    "memerInTraining" : "942086475019866132"
+
 }

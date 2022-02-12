@@ -20,7 +20,7 @@ module.exports = {
             .setColor("RANDOM")
             .addFields({name: "Instructions", value: "Hi! Please look at the selection menus below  the embed and specify your suggestion, once you have specified all the fields, you'll be able to submit it!"})
 
-        const select = new MessageActionRow()
+        const selectMenus = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
                     .setCustomId("type")
@@ -62,7 +62,7 @@ module.exports = {
                     .setStyle("DANGER")
         )
         
-        const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
+        const message = await interaction.reply({embeds: [suggestionEmbed], components: [selectMenus.components[0], buttonRow], fetchReply: true})
 
         const filter = (interaction) => {
             if(interaction.user.id === user.id) return true
