@@ -32,8 +32,8 @@ module.exports = {
                     .setCustomId("type")
                     .setPlaceholder("Type")
                     .addOptions([
-                        {label: "Suggestion", description: "What can we improve?", value: "Suggestion"},
-                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "Suggest Topic"}]))
+                        {label: "Suggestion", description: "What can we improve?", value: "suggestion"},
+                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "suggest topic"}]))
         
         const suggestion = new MessageActionRow()
             .addComponents(
@@ -43,7 +43,7 @@ module.exports = {
                     .addOptions([
                         {label: "Server", description: "What about the server?", value: "Server"},
                         {label: "Bot", description: "What about the bot?", value: "Bot"},
-                        {label: "Events", description: "regarding certain events to be held or discussed", value: "Events"}]))
+                        {label: "Events", description: "regarding certain events to be held or discussed", value: "events"}]))
 
         const question = new MessageActionRow()
             .addComponents(
@@ -51,8 +51,8 @@ module.exports = {
                     .setCustomId("category-topic")
                     .setPlaceholder("Category")
                     .addOptions([
-                        { label: "Debate", description: "Suggest a topic", value: "Debate"},
-                        { label: "Server", description: "Any inquiries?", value: "Server"}]))
+                        { label: "Debate", description: "Suggest a topic", value: "debate"},
+                        { label: "Server", description: "Any inquiries?", value: "server"}]))
         
         const buttonRow = new MessageActionRow()
             .addComponents(
