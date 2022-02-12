@@ -66,6 +66,7 @@ module.exports = {
         function disable() {
             buttonRow.components[0].setDisabled(true)
             buttonRow.components[1].setDisabled(true)
+            message.edit({components : [buttonRow]})
         }
         
         const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
