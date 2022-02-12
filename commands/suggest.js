@@ -1,5 +1,6 @@
 // discord.js
 const{ SlashCommandBuilder} = require("@discordjs/builders")
+const { RequestManager } = require("@discordjs/rest/dist/lib/RequestManager")
 const { MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton} = require("discord.js")
 
 module.exports = {
@@ -15,6 +16,11 @@ module.exports = {
         var typeValue
         var categoryValue
 
+        function disable() {
+            buttonRow.components[0].setDisabled(true)
+            buttonRow.components[1].setDisabled(true)
+        }
+
         const suggestionEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
             .setColor("RANDOM")
@@ -26,8 +32,8 @@ module.exports = {
                     .setCustomId("type")
                     .setPlaceholder("Type")
                     .addOptions([
-                        {label: "Suggestion", description: "What can we improve?", value: "suggestion"},
-                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "question"}]))
+                        {label: "Suggestion", description: "What can we improve?", value: "Suggestion"},
+                        {label: "Suggest-topic", description: "would you like to suggest a topical question for future prompts?", value: "Suggest-topic"}]))
         
         const suggestion = new MessageActionRow()
             .addComponents(
@@ -35,9 +41,9 @@ module.exports = {
                     .setCustomId("category-suggestion")
                     .setPlaceholder("Category")
                     .addOptions([
-                        {label: "Server", description: "What about the server?", value: "server-suggestion"},
-                        {label: "Bot", description: "What about the bot?", value: "bot-suggestion"},
-                        {label: "Events", description: "regarding certain events to be held or discussed", value: "events-suggestion"}]))
+                        {label: "Server", description: "What about the server?", value: "Server"},
+                        {label: "Bot", description: "What about the bot?", value: "Bot"},
+                        {label: "Events", description: "regarding certain events to be held or discussed", value: "Events"}]))
 
         const question = new MessageActionRow()
             .addComponents(
@@ -45,8 +51,8 @@ module.exports = {
                     .setCustomId("category-topic")
                     .setPlaceholder("Category")
                     .addOptions([
-                        { label: "Debate", description: "Suggest a topic", value: "debate-topic"},
-                        { label: "Server", description: "Any inquiries?", value: "server-inquiry"}]))
+                        { label: "Debate", description: "Suggest a topic", value: "Debate"},
+                        { label: "Server-inquiry", description: "Any inquiries?", value: "Server-inquiry"}]))
         
         const buttonRow = new MessageActionRow()
             .addComponents(
@@ -82,13 +88,11 @@ module.exports = {
 
                 if(id === "type" && value === "suggestion"){
                     buttonRow.components[0].setDisabled(true)
-                    select.components[0].setPlaceholder("Suggestion")
                     typeValue = value
                     set = suggestion
                 }
                 else if(id === "type" && value === "question"){
                     buttonRow.components[0].setDisabled(true)
-                    select.components[0].setPlaceholder("Suggest Topic")
                     typeValue = value
                     set = question
                 }
@@ -96,16 +100,15 @@ module.exports = {
                     buttonRow.components[0].setDisabled(false)
                     categoryValue = value
                 }
+                interaction.setPlaceholder(value)
             }
             else{
                 if(id === "exit"){
-                    buttonRow.components[0].setDisabled(true)
-                    buttonRow.components[1].setDisabled(true)
+                    disable()
                     return
                 }
                 else if(id === "sent"){
-                    buttonRow.components[0].setDisabled(true)
-                    buttonRow.components[1].setDisabled(true)
+                    disable()
 
                     const moderatorEmbed = new MessageEmbed()
                         .setTitle(`${user.username}'s suggestion`)
@@ -115,9 +118,15 @@ module.exports = {
                                    {name: "User", value: "null", inline: true})
                                    
                     moderator.send({embeds: [moderatorEmbed]})
+                    return
                 }
             }
             message.edit({components: [select, set, buttonRow]})
+        })
+
+        collector.on("end", ()=> {
+            disable()
+            return
         })
         
     }
