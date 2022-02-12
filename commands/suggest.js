@@ -100,7 +100,7 @@ module.exports = {
                     buttonRow.components[0].setDisabled(false)
                     categoryValue = value
                 }
-                interaction.setPlaceholder(value)
+                interaction.components[0].setPlaceholder(value)
             }
             else{
                 if(id === "exit"){
