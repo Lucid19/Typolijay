@@ -79,8 +79,6 @@ module.exports = {
         var set
 
         collector.on('collect', interaction => {
-            interaction.deferUpdate()
-
             const id = interaction.customId
 
             if(interaction.isSelectMenu()){
@@ -100,7 +98,6 @@ module.exports = {
                     buttonRow.components[0].setDisabled(false)
                     categoryValue = value
                 }
-                interaction.components[0].setPlaceholder(value)
             }
             else{
                 if(id === "exit"){
