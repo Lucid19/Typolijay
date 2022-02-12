@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("suggest")
         .setDescription("Send your suggestions or topical questions for review!")
-        .addStringOption(option => option.setName("Suggestion").setDescription("What do you suggest?").setRequired(true)),
+        .addStringOption(option => option.setName("suggestion").setDescription("What do you suggest?").setRequired(true)),
 
     async execute(interaction){
         const user = interaction.user
