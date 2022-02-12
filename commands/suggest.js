@@ -20,13 +20,14 @@ module.exports = {
             .setColor("RANDOM")
             .addFields({name: "Instructions", value: "Hi! Please look at the selection menus below  the embed and specify your suggestion, once you have specified all the fields, you'll be able to submit it!"})
 
-        const selectMenus =
+        const select = new MessageActionRow()
+            .addComponents(
                 new MessageSelectMenu()
                     .setCustomId("type")
                     .setPlaceholder("Type")
                     .addOptions([
                         {label: "Suggestion", description: "What can we improve?", value: "suggestion"},
-                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "question"}])
+                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "question"}]))
         
         const suggestion = new MessageActionRow()
             .addComponents(
@@ -38,13 +39,14 @@ module.exports = {
                         {label: "Bot", description: "What about the bot?", value: "bot-suggestion"},
                         {label: "Events", description: "regarding certain events to be held or discussed", value: "events-suggestion"}]))
 
-        const question = 
+        const question = new MessageActionRow()
+            .addComponents(
                 new MessageSelectMenu()
                     .setCustomId("category-topic")
                     .setPlaceholder("Category")
                     .addOptions([
                         { label: "Debate", description: "Suggest a topic", value: "debate-topic"},
-                        { label: "Server", description: "Any inquiries?", value: "server-inquiry"}])
+                        { label: "Server", description: "Any inquiries?", value: "server-inquiry"}]))
         
         const buttonRow = new MessageActionRow()
             .addComponents(
@@ -60,8 +62,7 @@ module.exports = {
                     .setStyle("DANGER")
         )
         
-        const message = await interaction.reply({embeds: [suggestionEmbed], components: [selectMenus, buttonRow], fetchReply: true})
-        console.log(selectMenus.components)
+        const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
         const filter = (interaction) => {
             if(interaction.user.id === user.id) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
@@ -77,21 +78,24 @@ module.exports = {
             const id = interaction.customId
 
             if(interaction.isSelectMenu()){
-                const value = interaction.values
+                const value = interaction.values[0]
+                const label = interaction.labels[0]
 
-                if(id === "type" && value[0] === "suggestion"){
+                if(id === "type" && value === "suggestion"){
                     buttonRow.components[0].setDisabled(true)
-                    typeValue = value[0]
+                    select.components[0].setPlaceholder("Suggestion")
+                    typeValue = value
                     set = suggestion
                 }
-                else if(id === "type" && value[0] === "question"){
+                else if(id === "type" && value === "question"){
                     buttonRow.components[0].setDisabled(true)
-                    typeValue = value[0]
+                    select.components[0].setPlaceholder("Suggest Topic")
+                    typeValue = value
                     set = question
                 }
                 else{
                     buttonRow.components[0].setDisabled(false)
-                    categoryValue = value[0]
+                    categoryValue = value
                 }
             }
             else{
