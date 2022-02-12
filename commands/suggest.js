@@ -41,8 +41,8 @@ module.exports = {
                     .setCustomId("category-suggestion")
                     .setPlaceholder("Category")
                     .addOptions([
-                        {label: "Server", description: "What about the server?", value: "Server"},
-                        {label: "Bot", description: "What about the bot?", value: "Bot"},
+                        {label: "Server", description: "What about the server?", value: "server"},
+                        {label: "Bot", description: "What about the bot?", value: "bot"},
                         {label: "Events", description: "regarding certain events to be held or discussed", value: "events"}]))
 
         const question = new MessageActionRow()
