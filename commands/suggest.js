@@ -88,11 +88,16 @@ module.exports = {
 
                 if(id === "type" && value === "suggestion"){
                     buttonRow.components[0].setDisabled(true)
+                    select.components[0].setPlaceholder(value)
+                    question.components[0].setPlaceholder("Category")
+
                     typeValue = value
                     set = suggestion
                 }
                 else if(id === "type" && value === "question"){
                     buttonRow.components[0].setDisabled(true)
+                    select.components[0].setPlaceholder(value)
+                    suggestion.components[0].setPlaceholder("Category")
                     typeValue = value
                     set = question
                 }
@@ -100,7 +105,6 @@ module.exports = {
                     buttonRow.components[0].setDisabled(false)
                     categoryValue = value
                 }
-                console.log(interaction)
             }
             else{
                 if(id === "exit"){
