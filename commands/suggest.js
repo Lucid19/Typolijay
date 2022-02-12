@@ -8,9 +8,11 @@ module.exports = {
         .setDescription("Send your suggestions or topical questions for review!")
         .addStringOption(option => option.setName("suggestion").setDescription("What do you suggest?").setRequired(true)),
 
-    async execute(interaction, suggest){
+    async execute(interaction){
         const user = interaction.user
         const moderator = interaction.guild.channels.cache.get("939990739939639338")
+
+        const suggest = interaction.options.getString("suggestion")
 
         var typeValue
         var categoryValue
