@@ -16,11 +16,6 @@ module.exports = {
         var typeValue
         var categoryValue
 
-        function disable() {
-            buttonRow.components[0].setDisabled(true)
-            buttonRow.components[1].setDisabled(true)
-        }
-
         const suggestionEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
             .setColor("RANDOM")
@@ -67,6 +62,11 @@ module.exports = {
                     .setCustomId("exit")
                     .setStyle("DANGER")
         )
+
+        function disable() {
+            buttonRow.components[0].setDisabled(true)
+            buttonRow.components[1].setDisabled(true)
+        }
         
         const message = await interaction.reply({embeds: [suggestionEmbed], components: [select, buttonRow], fetchReply: true})
         const filter = (interaction) => {
