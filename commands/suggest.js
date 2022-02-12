@@ -113,7 +113,7 @@ module.exports = {
                         .setTimestamp()
                         .setColor("RANDOM")
                         .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
-                                   {name: "User", value: "yes", inline: true})
+                                   {name: "User", value: "null", inline: true})
                                    
                     moderator.send({embeds: [moderatorEmbed]})
                 }
