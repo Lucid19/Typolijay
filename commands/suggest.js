@@ -32,8 +32,8 @@ module.exports = {
                     .setCustomId("type")
                     .setPlaceholder("Type")
                     .addOptions([
-                        {label: "Suggestion", description: "What can we improve?", value: "suggestion"},
-                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "question"}]))
+                        {label: "Suggestion", description: "What can we improve?", value: "Suggestion"},
+                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "Suggest Topic"}]))
         
         const suggestion = new MessageActionRow()
             .addComponents(
@@ -41,9 +41,9 @@ module.exports = {
                     .setCustomId("category-suggestion")
                     .setPlaceholder("Category")
                     .addOptions([
-                        {label: "Server", description: "What about the server?", value: "server-suggestion"},
-                        {label: "Bot", description: "What about the bot?", value: "bot-suggestion"},
-                        {label: "Events", description: "regarding certain events to be held or discussed", value: "events-suggestion"}]))
+                        {label: "Server", description: "What about the server?", value: "Server"},
+                        {label: "Bot", description: "What about the bot?", value: "Bot"},
+                        {label: "Events", description: "regarding certain events to be held or discussed", value: "Events"}]))
 
         const question = new MessageActionRow()
             .addComponents(
@@ -51,8 +51,8 @@ module.exports = {
                     .setCustomId("category-topic")
                     .setPlaceholder("Category")
                     .addOptions([
-                        { label: "Debate", description: "Suggest a topic", value: "debate-topic"},
-                        { label: "Server", description: "Any inquiries?", value: "server-inquiry"}]))
+                        { label: "Debate", description: "Suggest a topic", value: "Debate"},
+                        { label: "Server", description: "Any inquiries?", value: "Server"}]))
         
         const buttonRow = new MessageActionRow()
             .addComponents(
