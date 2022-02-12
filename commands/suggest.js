@@ -88,13 +88,13 @@ module.exports = {
 
                 if(id === "type" && value === "suggestion"){
                     buttonRow.components[0].setDisabled(true)
-                    select.components[0].setPlaceholder("Suggestion")
+                    select.components[0].setPlaceholder(value)
                     typeValue = value
                     set = suggestion
                 }
                 else if(id === "type" && value === "question"){
                     buttonRow.components[0].setDisabled(true)
-                    select.components[0].setPlaceholder("Suggest Topic")
+                    select.components[0].setPlaceholder(value)
                     typeValue = value
                     set = question
                 }
