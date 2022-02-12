@@ -100,6 +100,8 @@ module.exports = {
                 }
                 else{
                     buttonRow.components[0].setDisabled(false)
+                    question.components[0].setPlaceholder(value)
+                    suggestion.components[0].setPlaceholder(value)
                     categoryValue = value
                 }
             }
