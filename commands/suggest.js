@@ -62,8 +62,8 @@ module.exports = {
                     .setStyle("DANGER")
         )
         
-        const message = await interaction.reply({embeds: [suggestionEmbed], components: [selectMenus.components[0], buttonRow], fetchReply: true})
-
+        const message = await interaction.reply({embeds: [suggestionEmbed], components: [selectMenus, buttonRow], fetchReply: true})
+        console.log(selectMenus)
         const filter = (interaction) => {
             if(interaction.user.id === user.id) return true
             return interaction.reply({content: "you are not the author", ephemeral: true})
