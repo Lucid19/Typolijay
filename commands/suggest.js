@@ -1,6 +1,5 @@
 // discord.js
 const{ SlashCommandBuilder} = require("@discordjs/builders")
-const { RequestManager } = require("@discordjs/rest/dist/lib/RequestManager")
 const { MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton} = require("discord.js")
 
 module.exports = {
@@ -9,7 +8,7 @@ module.exports = {
         .setDescription("Send your suggestions or topical questions for review!")
         .addStringOption(option => option.setName("suggestion").setDescription("What do you suggest?").setRequired(true)),
 
-    async execute(interaction){
+    async execute(interaction, suggest){
         const user = interaction.user
         const moderator = interaction.guild.channels.cache.get("939990739939639338")
 
@@ -119,7 +118,7 @@ module.exports = {
                         .setTimestamp()
                         .setColor("RANDOM")
                         .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
-                                   {name: "User", value: "null", inline: true})
+                                   {name: "User", value: suggest, inline: true})
                                    
                     moderator.send({embeds: [moderatorEmbed]})
                     return
