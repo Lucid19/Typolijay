@@ -119,6 +119,7 @@ module.exports = {
                         .setTitle(`${user.username}'s suggestion`)
                         .setTimestamp()
                         .setColor("RANDOM")
+                        .setThumbnail(user.displayAvatarURL())
                         .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
                                    {name: "User", value: "null", inline: true},
                                    {name: "Suggestion", value: suggest})
