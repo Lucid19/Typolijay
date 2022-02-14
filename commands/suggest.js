@@ -121,7 +121,7 @@ module.exports = {
                         .setColor("RANDOM")
                         .setThumbnail(user.displayAvatarURL())
                         .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
-                                   {name: "User", value: user.discriminator, inline: true},
+                                   {name: "User", value: user.tag, inline: true},
                                    {name: "Suggestion", value: suggest})
                                    
                     moderator.send({embeds: [moderatorEmbed]})
