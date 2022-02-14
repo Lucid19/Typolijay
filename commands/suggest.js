@@ -29,7 +29,7 @@ module.exports = {
                     .setPlaceholder("Type")
                     .addOptions([
                         {label: "Suggestion", description: "What can we improve?", value: "suggestion"},
-                        {label: "Suggest a topic", description: "would you like to suggest a topical question for future prompts?", value: "suggest topic"}]))
+                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "suggest-topic"}]))
         
         const suggestion = new MessageActionRow()
             .addComponents(
