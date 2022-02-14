@@ -87,6 +87,7 @@ module.exports = {
 
             if(interaction.isSelectMenu()){
                 const value = interaction.values[0]
+                console.log(value)
 
                 if(id === "type" && value === "suggestion"){
                     buttonRow.components[0].setDisabled(true)
