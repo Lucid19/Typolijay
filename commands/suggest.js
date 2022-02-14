@@ -95,7 +95,7 @@ module.exports = {
                     typeValue = value
                     set = suggestion
                 }
-                else if(id === "type" && value === "question"){
+                else if(id === "type" && value === "suggest-topic"){
                     buttonRow.components[0].setDisabled(true)
                     select.components[0].setPlaceholder(value)
                     typeValue = value
