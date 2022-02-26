@@ -27,7 +27,7 @@ module.exports = {
                     .setPlaceholder("Type")
                     .addOptions([
                         {label: "Suggestion", description: "What can we improve?", value: "suggestion"},
-                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "suggest topic"}]))
+                        {label: "Suggest topic", description: "would you like to suggest a topical question for future prompts?", value: "suggest-topic"}]))
         
         const suggestion = new MessageActionRow()
             .addComponents(
@@ -97,7 +97,7 @@ module.exports = {
                     typeValue = value
                     set = suggestion
                 }
-                else if(id === "type" && value === "question"){
+                else if(id === "type" && value === "suggest-topic"){
                     buttonRow.components[0].setDisabled(true)
                     select.components[0].setPlaceholder(value)
                     typeValue = value
@@ -122,8 +122,9 @@ module.exports = {
                         .setTitle(`${user.username}'s suggestion`)
                         .setTimestamp()
                         .setColor("RANDOM")
+                        .setThumbnail(user.displayAvatarURL())
                         .addFields({name: "Details", value: `Type: ${typeValue}\nCategory: ${categoryValue}`, inline: true},
-                                   {name: "User", value: "null", inline: true},
+                                   {name: "User", value: user.tag, inline: true},
                                    {name: "Suggestion", value: suggest})
                                    
                     moderator.send({embeds: [moderatorEmbed]})
