@@ -24,6 +24,7 @@
     "@discordjs/rest": "^0.1.0-canary.0",
     "discord-api-types": "^0.25.2",
     "discord.js": "^13.4.0-dev.1639137780.ee91f5a",
+    "googleapis": "^95.0.0",
     "mysql": "^2.18.1"
   }
 }

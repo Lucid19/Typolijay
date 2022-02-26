@@ -1,6 +1,7 @@
 // discord.js
 const{ SlashCommandBuilder} = require("@discordjs/builders")
 const { MessageEmbed, MessageActionRow, MessageSelectMenu, MessageButton} = require("discord.js")
+const { google } = require("googleapis")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -13,9 +14,6 @@ module.exports = {
         const moderator = interaction.guild.channels.cache.get("939990739939639338")
 
         const suggest = interaction.options.getString("suggestion")
-
-        var typeValue
-        var categoryValue
 
         const suggestionEmbed = new MessageEmbed()
             .setTitle(`${user.username}'s suggestion`)
@@ -77,7 +75,12 @@ module.exports = {
         }
 
         const collector = message.createMessageComponentCollector({ filter, time: 30000 })
-        
+
+        // Values for Embed
+        var typeValue
+        var categoryValue
+
+        // Temp placeholder
         var set
 
         collector.on('collect', interaction => {
