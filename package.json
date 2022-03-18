@@ -4,7 +4,7 @@
   "description": "The main Server for bot for Typolijays!",
   "main": "index.js",
   "scripts": {
-    "start": "node test.js"
+    "start": "node index.js"
   },
   "engines": {
     "node": "17.x"
