@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Lucid19/wanderer#readme",
   "dependencies": {
+    "@discordjs/builders": "github:discordjs/builders",
+    "discord-api-types": "^0.33.1",
     "discord.js": "^13.7.0",
     "js-markov": "^3.0.3"
   }
