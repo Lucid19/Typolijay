@@ -1,0 +1,25 @@
+{
+  "name": "wanderer",
+  "version": "1.0.0",
+  "description": "Not to fret, light your path and maybe you will get to wield your destiny. Or let the darkness enshroud you; If you are willing to stare into the darkness, freedom may be feasible.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucid19/wanderer.git"
+  },
+  "author": "Lucid19",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lucid19/wanderer/issues"
+  },
+  "homepage": "https://github.com/Lucid19/wanderer#readme",
+  "dependencies": {
+    "@discordjs/builders": "github:discordjs/builders",
+    "discord-api-types": "^0.33.1",
+    "discord.js": "^13.7.0",
+    "js-markov": "^3.0.3"
+  }
+}
