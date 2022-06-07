@@ -32,3 +32,5 @@ for(const file of eventFiles){
         client.on(event.name, (...args) => event.execute(...args, commands))
     )
 }
+
+client.login(config.token)
