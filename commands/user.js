@@ -37,7 +37,7 @@ module.exports = {
             .setColor("RANDOM")
             .addFields({name: "general", value: "lvl: 3 :blue_square: :blue_square: :blue_square: :black_large_square: :black_large_square: 4"},
                        {name: "debate", value: "lvl: 2 :blue_square: :blue_square: :blue_square: :black_large_square: :black_large_square: 3"},
-                       {name: "motivational", "lvl: 0 :blue_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: 1"},
+                       {name: "motivational", value : "lvl: 0 :blue_square: :black_large_square: :black_large_square: :black_large_square: :black_large_square: 1"},
                        {name: "meme", value: "lvl: 1 :blue_square: :blue_square: :black_large_square: :black_large_square: :black_large_square: 2*")
 
         // buttons displayed
